@@ -1,22 +1,23 @@
 <script lang="ts">
-  import "../../lib";
-  import type { CatalogueText } from "../../lib/src/types/texts";
-  import { dktkDiagnosisMeasure, dktkMedicationStatementsMeasure, dktkPatientsMeasure, dktkProceduresMeasure, dktkSpecimenMeasure } from "./measures";
+  import "../../../lib";
+  import type { CatalogueText } from "../../../lib/src/types/texts";
+  import { diagnosisMeasureBbmriProd,
+  patientsMeasureBbmriProd,
+  specimenMeasureBbmriProd
+} from "../measures";
 
   let mockCatalogueData = "";
 
-  fetch("catalogues/catalogue-dktk.json")
+  fetch("../catalogues/catalogue-bbmri.json")
     .then((response) => response.text())
     .then((data) => {
       mockCatalogueData = data;
     });
 
   const measures = [
-    dktkPatientsMeasure,
-    dktkDiagnosisMeasure,
-    dktkSpecimenMeasure,
-    dktkProceduresMeasure,
-    dktkMedicationStatementsMeasure
+    diagnosisMeasureBbmriProd,
+    patientsMeasureBbmriProd,
+    specimenMeasureBbmriProd,
   ];
 
   const cqlHeader = `library Retrieve
@@ -146,121 +147,112 @@
     catalogueKeyToResponseKeyMap: catalogueKeyToResponseKeyMap,
   };
 
- 
-  
-    
+
+  const chartColors: string[] = [
+      '#003674',
+      '#1a4a82',
+      '#335e90',
+      '#4d729e',
+      '#6686ac',
+      '#809bba',
+      '#99afc7',
+  ];
+  const chartBackgroudnColors: string[] = ["#e95713"];
+
 </script>
 
 <header>
   <div class="logo">
-    <img src="../dktk.svg" alt="Logo des DKTK" />
+    <img
+      src="../public/BBMRI-ERIC-gateway-for-health.svg"
+      alt="Biobank Sweden logo"
+    />
   </div>
-  <h1>CCP Explorer</h1>
-  <div class="logo logo-dkfz">
-    <img src="../Deutsches_Krebsforschungszentrum_Logo.svg" alt="Logo des DKTK" />
+  <div class="menu">
+    <a href="https://www.bbmri-eric.eu/about/">About Us</a>
+    <a href="mailto:locator@helpdesk.bbmri-eric.eu">Contact</a>
+    <a href="https://www.bbmri-eric.eu/bbmri-sample-and-data-portal/">Logout</a>
   </div>
 </header>
 <main>
+  <div class="headings">
+    <h1>BBMRI-ERIC Locator</h1>
+    <h2>Search for human biospecimens across European biobanks</h2>
+  </div>
   <div class="search">
-    <lens-search-bar
+    <lens-search-bar-multiple
       treeData={mockCatalogueData}
-      noMatchesFoundMessage={"keine Ergebnisse gefunden"}
-      measures={[dktkPatientsMeasure, dktkDiagnosisMeasure, dktkSpecimenMeasure, dktkPatientsMeasure, dktkMedicationStatementsMeasure]}
+      noMatchesFoundMessage={"No matches found"}
+      measures={measures}
     >
-  </lens-search-bar>
-  <lens-info-button iconUrl='../info-circle-svgrepo-com.svg' noQueryMessage="Leere Suchanfrage: Sucht nach allen Ergebnissen." />
+    <lens-info-button iconUrl='../info-circle-svgrepo-com.svg' noQueryMessage="Leere Suchanfrage: Sucht nach allen Ergebnissen." />
   <lens-search-button
-    title="Suchen"
+    title="Search"
     {measures}
     backendConfig={JSON.stringify(backendConfig)}
     {cqlHeader}
   />
+    </lens-search-bar-multiple>
   </div>
   <div class="grid">
-    <div class="catalogue">
+    <div
+      class="catalogue"
+      style={`max-width: ${catalogueopen ? "1000px" : "288px"}`}
+    >
       <lens-catalogue
-        toggleIconUrl='right-arrow-svgrepo-com.svg'
-        addIconUrl='long-right-arrow-svgrepo-com.svg'
-        treeData={mockCatalogueData}
+        treeData={JSON.stringify(mockCatalogueData)}
         texts={catalogueText}
-        toggle={{ collapsable: false, open: catalogueopen }}
+        toggle={{ collapsable: true, open: false }}
       />
     </div>
     <div class="charts">
-      <div class="chart-wrapper result-summary">
+      <div class="chart-wrapper summary-bar">
         <lens-result-summary
-          title="Ergebnisse"
-          resultSummaryDataTypes={JSON.stringify(resultSummaryConfig)}
-        />
-      </div>
-      <div class="chart-wrapper">
-        <lens-chart
-          title="Patienten pro Standort"
-          catalogueGroupCode="patients"
-          perSite={true}
-          displayLegends={true}
-          chartType="pie"
-        />
+        title="Ergebnisse"
+        resultSummaryDataTypes={JSON.stringify(resultSummaryConfig)}
+      />
       </div>
       <div class="chart-wrapper result-table">
         <lens-result-table pageSize="10" />
       </div>
-      <div class="chart-wrapper">
+      <div class="chart-wrapper chart-gender-distribution">
         <lens-chart
-          title="Geschlecht"
+          title="Gender Distribution"
+          backgroundColor={JSON.stringify(chartColors)}
+          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="gender"
           chartType="pie"
           displayLegends={true}
           clickToAddState={true}
         />
       </div>
-      <div class="chart-wrapper chart-diagnosis">
-        <lens-chart
-          title="Diagnose"
-          catalogueGroupCode="diagnosis"
-          chartType="bar"
-          indexAxis='y'
-          clickToAddState={true}
-        />
-      </div>
       <div class="chart-wrapper chart-age-distribution">
         <lens-chart
-          title="Alter bei Erstdiagnose"
+          title="Age Distribution"
+          backgroundColor={JSON.stringify(chartColors)}
+          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="age_at_diagnosis"
           chartType="bar"
           clickToAddState={true}
           groupRange={10}
         />
       </div>
-      <div class="chart-wrapper">
+      <div class="chart-wrapper chart-specimens">
         <lens-chart
-          title="Vitalstatus"
-          catalogueGroupCode="75186-7"
-          chartType="pie"
-          displayLegends={true}
-          clickToAddState={true}
-        />
-      </div>
-      <div class="chart-wrapper">
-        <lens-chart
-          title="Therapieart"
-          catalogueGroupCode="therapy_of_tumor"
-          chartType="bar"
-          clickToAddState={true}
-        />
-      </div>
-      <div class="chart-wrapper">
-        <lens-chart
-          title="Systemische Therapien"
-          catalogueGroupCode="medicationStatements"
-          chartType="bar"
-          clickToAddState={true}
-        />
-      </div>
-      <div class="chart-wrapper">
-        <lens-chart
-          title="Proben"
+          title="Specimens"
+          backgroundColor={JSON.stringify(chartColors)}
+          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="sample_kind"
+          chartType="bar"
+          clickToAddState={true}
+        />
+      </div>
+      <div class="chart-wrapper chart-diagnosis">
+        <lens-chart
+          title="Diagnosis"
+          backgroundColor={JSON.stringify(chartColors)}
+          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
+          catalogueGroupCode="diagnosis"
           chartType="bar"
           clickToAddState={true}
         />
@@ -270,12 +262,18 @@
 </main>
 
 <footer>
-  <a class="user-agreement" href="">Nutzervereinbarung</a>
-  <a class="email" href="mailto:CCP@dkfz.de">CCP@dkfz.de</a>
-  <div class="copyright">
-    <span>&#169; 2023</span>
-    <a href="https://dktk.dkfz.de/en/clinical-platform/about-ccp"
-      >Clinical Comunication Platform (CCP)</a
-    >
+  <a href="https://www.bbmri-eric.eu/privacy-notice/">Privacy Policy</a>
+  <a href="">made with &#10084; & samply-lens</a>
+  <div class="img-container">
+    <img
+      src="../public/logo-dkfz.svg"
+      alt="german cancer research center logo"
+    />
+  </div>
+  <div class="img-container">
+    <img src="../public/GBN_logo.svg" alt="german biobank node logo" />
+  </div>
+  <div class="img-container">
+    <img src="../public/logo_ce-en-rvb-lr.jpg" alt="european commission logo" />
   </div>
 </footer>

@@ -23,7 +23,6 @@
     export let treeData: Category[] = [];
     export let noMatchesFoundMessage: string = "No matches found";
     export let placeholderText: string = "Type to filter conditions";
-    export let chips: boolean = true;
 
     /**
      * Adds a new search bar to the query store

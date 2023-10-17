@@ -1,9 +1,11 @@
-@import url('./styles/default/searchbars.css');
-@import url('./styles/default/search-button.css');
-@import url('./styles/default/catalogue.css');
-@import url('./styles/default/results-overview.css');
-@import url('./styles/default/result-table.css');
-@import url('./styles/default/result-chart.css');
+@import url('../styles/default/searchbars.css');
+@import url('../styles/default/search-button.css');
+@import url('../styles/default/catalogue.css');
+@import url('../styles/default/results-overview.css');
+@import url('../styles/default/result-table.css');
+@import url('../styles/default/result-chart.css');
+@import url('../styles/default/negotiate-button.css');
+@import url('../styles/default/info-button.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -221,4 +223,29 @@ footer .img-container {
 
 footer img {
   height: 60px;
+}
+
+
+/**
+* Overrides
+*/
+
+lens-search-bar-multiple::part(lens-searchbar-chip) {
+  background-color: var(--blue)
+}
+
+lens-search-bar-multiple::part(lens-searchbar-add-button) {
+  background-color: var(--blue)
+}
+
+lens-search-bar-multiple::part(lens-searchbar-add-button):hover {
+  background-color: var(--light-blue)
+}
+
+lens-catalogue::part(lens-catalogue-toggle-button) {
+  background-color: var(--blue)
+}
+
+lens-catalogue::part(lens-catalogue-toggle-button):hover {
+  background-color: var(--light-blue)
 }
