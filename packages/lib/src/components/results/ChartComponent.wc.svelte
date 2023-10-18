@@ -27,7 +27,6 @@
     import { catalogueKeyToResponseKeyMap } from "../../stores/mappings";
     import type { ResponseStore } from "../../types/backend";
     import type { Site } from "../../types/response";
-    import { parse } from "svelte/compiler";
 
     export let title: string = ""; // e.g. 'Gender Distribution'
     export let catalogueGroupCode: string = ""; // e.g. "gender"
@@ -42,6 +41,9 @@
     export let chartType: keyof ChartTypeRegistry = "pie";
     export let perSite: boolean = false;
     export let groupRange: number | null = null;
+    export let groupingDivider: string | null = null;
+    export let filterRegex: string | null = null;
+    export let groupingLabel: string = "";
 
     export let backgroundColor: string[] = [
         "#4dc9f6",
@@ -116,7 +118,10 @@
     const getChartDataSets = (
         responseStore: ResponseStore,
         chartLabels: string[]
-    ): { label; data; backgroundColor; backgroundHoverColor }[] => {
+    ): {
+        labels: string[];
+        data: { label; data; backgroundColor; backgroundHoverColor }[];
+    } => {
         let dataSet: number[];
 
         if (perSite) {
@@ -130,6 +135,18 @@
                 );
                 return data?.population[0]?.count || 0;
             });
+
+            return {
+                labels: chartLabels,
+                data: [
+                    {
+                        label: "",
+                        data: dataSet,
+                        backgroundColor,
+                        backgroundHoverColor,
+                    },
+                ],
+            };
         } else {
             dataSet = chartLabels.map((label: string): number => {
                 const stratifierCode = label;
@@ -141,21 +158,109 @@
                 return stratifierCodeCount;
             });
         }
-        return [
-            {
-                label: "",
-                data: dataSet,
-                backgroundColor,
-                backgroundHoverColor,
-            },
-        ];
+
+        const combinedSubGroupData = combineSubGroups(
+            groupingDivider,
+            responseStore,
+            chartLabels
+        );
+        return {
+            labels: combinedSubGroupData.labels,
+            data: [
+                {
+                    label: "",
+                    data: combinedSubGroupData.data,
+                    backgroundColor,
+                    backgroundHoverColor,
+                },
+            ],
+        };
+    };
+
+    /**
+     * filters the labels by the given regex
+     * @param labels
+     * @returns the filtered labels
+     */
+    const filterRegexMatch = (labels: string[]): string[] => {
+        if (filterRegex === null) return labels;
+        return labels.filter((label) => label.match(filterRegex));
+    };
+
+    /**
+     * combines subgroups into their supergroups like C30, C31.1 and C31.2 into C31
+     * @param divider the divider used to split the labels
+     * @param responseStore the response store
+     * @param labels the labels to combine
+     * @returns the combined labels and their data
+     */
+    const combineSubGroups = (
+        divider: string,
+        responseStore: ResponseStore,
+        labels: string[]
+    ): { labels: string[]; data: number[] } => {
+        const groupedChartData: { label: string; value: number }[] =
+            labels.reduce((acc, label) => {
+                /**
+                 * see if the label contains the divider
+                 * if not, add it to the accumulator with a .% at the end
+                 */
+                if (!label.includes(divider)) {
+                    return [
+                        ...acc,
+                        {
+                            label: label + groupingLabel,
+                            value: getAggregatedPopulationForStratumCode(
+                                responseStore,
+                                label
+                            ),
+                        },
+                    ];
+                }
+
+                /**
+                 * if the label contains the divider, find the corresponding super class item
+                 * if it doesn't exist, create it
+                 * add the value of the current label to the value of the super class item
+                 * and add it to the accumulator
+                 */
+                let superClassItem: { label: string; value: number } = acc.find(
+                    (item) =>
+                        item.label === label.split(divider)[0] + groupingLabel
+                );
+
+                if (!superClassItem) {
+                    superClassItem = {
+                        label: label.split(divider)[0] + groupingLabel,
+                        value: 0,
+                    };
+                }
+
+                superClassItem.value += getAggregatedPopulationForStratumCode(
+                    responseStore,
+                    label
+                );
+
+                return [
+                    ...acc.filter(
+                        (item) =>
+                            item.label !==
+                            label.split(divider)[0] + groupingLabel
+                    ),
+                    superClassItem,
+                ];
+            }, []);
+
+        return {
+            labels: groupedChartData.map((item) => item.label),
+            data: groupedChartData.map((item) => item.value),
+        };
     };
 
     /**
      * watches the response store and updates the chart data
      */
     const setChartData = (responseStore: ResponseStore) => {
-
         if (responseStore.size === 0) return;
 
         let isDataAvailable: boolean = false;
@@ -180,44 +285,49 @@
                 responseGroupCode
             );
         }
-
+        chartLabels = filterRegexMatch(chartLabels);
         chartLabels.sort(customSort);
-        
+
         /**
          * remove labels and their corresponding data if the label is an empty string or null
-        */
-        chartLabels = chartLabels.filter((label) => label !== "" && label !== null);
-                
+         */
+        chartLabels = chartLabels.filter(
+            (label) => label !== "" && label !== null && label !== "null"
+        );
 
-        chart.data.datasets = getChartDataSets(responseStore, chartLabels);
-        
+        /**
+         * get the chart data sets from the response store
+         * will be aggregated in groups if a divider is set
+         * eg. 'C30', 'C31.1', 'C31.2' -> 'C31' when divider is '.'
+         */
+        let chartData = getChartDataSets(responseStore, chartLabels);
+        chart.data.datasets = chartData.data;
+        chartLabels = chartData.labels;
+
         /**
          * lets the user define a range for the labels when only single values are used eg. '60' -> '60 - 69'
-        */
-        if(groupRange !== null){
-            chartLabels = chartLabels.map((label) => 
-                {
-                    /**
-                     * check if label doesn't parse to a number
-                    */
-                    if(isNaN(parseInt(label)))
-                        return label;
+         */
+        if (groupRange !== null) {
+            chartLabels = chartLabels.map((label) => {
+                /**
+                 * check if label doesn't parse to a number
+                 */
+                if (isNaN(parseInt(label))) return label;
 
-                    return `${parseInt(label)} - ${(parseInt(label) + groupRange)}`
-                }
-            );
+                return `${parseInt(label)} - ${parseInt(label) + groupRange}`;
+            });
         }
 
         chart.data.labels = chartLabels;
+
         chart.update();
     };
 
     $: {
-        if ($responseStore.size !== 0){
+        if ($responseStore.size !== 0) {
             setChartData($responseStore);
         }
-    } 
-    
+    }
 
     onMount(() => {
         chart = new Chart(canvas, initialChartData);
@@ -266,8 +376,13 @@
                                  */
                                 values = [
                                     {
-                                        name: `${label} - ${parseInt(label) + 9}`,
-                                        value: { min: parseInt(label), max: parseInt(label) + 9},
+                                        name: `${label} - ${
+                                            parseInt(label) + 9
+                                        }`,
+                                        value: {
+                                            min: parseInt(label),
+                                            max: parseInt(label) + 9,
+                                        },
                                         queryBindId: uuidv4(),
                                     },
                                 ];
@@ -314,7 +429,7 @@
 </script>
 
 <div part="chart-wrapper">
-    <h4 part="chart-title">{title}</h4> 
+    <h4 part="chart-title">{title}</h4>
     <canvas
         part="chart-canvas"
         bind:this={canvas}

@@ -51,8 +51,8 @@
     collapseButtonTitle: "Collapse Tree",
     expandButtonTitle: "Expand Tree",
     numberInput: {
-      labelFrom: "From",
-      labelTo: "to",
+      labelFrom: "von",
+      labelTo: "bis",
     },
   };
 
@@ -221,6 +221,10 @@
           chartType="bar"
           indexAxis='y'
           clickToAddState={true}
+          groupingDivider='.'
+          groupingLabel='.%'
+          filterRegex='^[CD].*'
+
         />
       </div>
       <div class="chart-wrapper chart-age-distribution">

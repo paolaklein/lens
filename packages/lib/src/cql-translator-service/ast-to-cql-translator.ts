@@ -46,7 +46,6 @@ export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: bool
   singletons = (backendMeasureReplacement)
     ? "DKTK_STRAT_DEF_IN_INITIAL_POPULATION\n"
     : "define InInitialPopulation:\n"
-  console.log(singletons)
   singletons += resolveOperation(query)
 
   if (query.children.length == 0) {
@@ -73,7 +72,6 @@ const resolveOperation = (operation: AstElement): string => {
   }
 
   'children' in operation && operation.children.forEach((element: AstElement, index) => {
-    console.log(element);
     if ('children' in element) {
       expression += resolveOperation(element)
     }
@@ -93,7 +91,12 @@ const resolveOperation = (operation: AstElement): string => {
 
 const getSingleton = (criterion: AstBottomLayerValue): string => {
   let expression: string = "";
-  console.log(criterion)
+
+  //TODO: Workaround for using the value of "Therapy of Tumor" as key. Need an additional field in catalogue
+  if (criterion.key === "therapy_of_tumor") {
+    criterion.key = criterion.value as string;
+  }
+
   const myCriterion = criterionMap.get(criterion.key)
 
   if (myCriterion) {
@@ -198,10 +201,10 @@ const substituteCQLExpression = (key: string, alias: string[] | undefined, cql: 
     const systemExpression = "codesystem " + alias[1] + ": '" + aliasMap.get(alias[1]) + "'"
     if (!codesystems.includes(systemExpression)) { codesystems.push(systemExpression) }
   }
-  if (min) {
+  if (min || min === 0) {
     cqlString = cqlString.replace(new RegExp("{{D1}}"), min.toString())
   }
-  if (max) {
+  if (max || max === 0) {
     cqlString = cqlString.replace(new RegExp("{{D2}}"), max.toString())
   }
   return cqlString
