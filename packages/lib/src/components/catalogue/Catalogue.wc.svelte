@@ -23,22 +23,23 @@
     export let texts: CatalogueText = {};
     export let addIconUrl: string | null = null;
     export let toggleIconUrl: string | null = null;
+    export let collapseButtonIconUrl: string | null = null;
 
-    iconStore.update((store: Map<string,string>) => {
+    iconStore.update((store: Map<string, string>) => {
         if (addIconUrl) {
-            store.set('addIconUrl', addIconUrl);
+            store.set("addIconUrl", addIconUrl);
         }
         if (toggleIconUrl) {
-            store.set('toggleIconUrl', toggleIconUrl);
+            store.set("toggleIconUrl", toggleIconUrl);
         }
         return store;
-    })
+    });
 
-      /**
+    /**
      * Initialize the catalogue store with the given tree data
      * watch for changes from other components
      */
-     $: $catalogue = treeData;
+    $: $catalogue = treeData;
 
     /**
      * Initialize the text store with the given texts
@@ -52,7 +53,7 @@
         collapsable: true,
         open: false,
     };
-    
+
     let toggleTree = toggle.open;
 
     const handleToggle = () => {
@@ -71,8 +72,6 @@
             labelTo: texts.numberInput?.labelTo || "to",
         },
     };
-
-  
 </script>
 
 <div part="lens-catalogue">
@@ -83,13 +82,23 @@
                 : ''}"
             on:click={handleToggle}
         >
-            <div
-                part="toggle-button-icon {toggle.open
-                    ? 'toggle-button-open-icon'
-                    : ''}"
-            >
-                &#9660;
-            </div>
+            {#if collapseButtonIconUrl}
+                <img
+                    src={collapseButtonIconUrl}
+                    part="toggle-button-icon {toggleTree
+                        ? 'toggle-button-icon-open'
+                        : ''}"
+                    alt=""
+                />
+            {:else}
+                <div
+                    part="toggle-button-icon {toggleTree
+                        ? 'toggle-button-open-icon'
+                        : ''}"
+                >
+                    &#9660;
+                </div>
+            {/if}
             <div
                 part="toggle-button-text {toggle.open
                     ? 'toggle-button-open-text'

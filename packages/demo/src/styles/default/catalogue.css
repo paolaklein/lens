@@ -7,20 +7,32 @@ lens-catalogue::part(lens-catalogue-toggle-button) {
   color: var(--white);
   border: none;
   border-radius: var(--border-radius-small);
-  padding: var(--gap-xs) var(--gap-s);
+  padding: var(--gap-xs) var(--gap-s) var(--gap-xs) var(--gap-l);
   margin-bottom: var(--gap-s);
   font-size: var(--font-size-m);
   cursor: pointer;
   display: flex;
+  align-items: center;
   gap: var(--gap-xs);
+  position: relative;
 }
 
 lens-catalogue::part(lens-catalogue-toggle-button):hover {
   background-color: var(--light-green);
 }
 
-lens-catalogue::part(toggle-button-open-icon) {
-  transform: rotate(180deg);
+lens-catalogue::part(toggle-button-icon) {
+  width: 24px;
+  transform: rotate(0deg);
+  filter: brightness(0) invert(1);
+  position: absolute;
+  top: 20%;
+  left: var(--gap-xxs);
+  transition: all 0.1s ease-in-out;
+}
+
+lens-catalogue::part(toggle-button-icon-open) {
+  transform: rotate(90deg);
 }
 
 

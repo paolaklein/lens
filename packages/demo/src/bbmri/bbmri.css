@@ -242,6 +242,10 @@ lens-search-bar-multiple::part(lens-searchbar-add-button):hover {
   background-color: var(--light-blue)
 }
 
+lens-catalogue::part(lens-catalogue-wrapper){
+  padding: 0 var(--gap-s);
+}
+
 lens-catalogue::part(lens-catalogue-toggle-button) {
   background-color: var(--blue)
 }
@@ -249,3 +253,23 @@ lens-catalogue::part(lens-catalogue-toggle-button) {
 lens-catalogue::part(lens-catalogue-toggle-button):hover {
   background-color: var(--light-blue)
 }
+
+
+lens-catalogue::part(data-tree-element-toggle-icon) {
+  width: 24px;
+  transform: rotate(0deg);
+  left: -15px;
+  top: 0px;
+  filter: invert(29%) sepia(17%) saturate(327%) hue-rotate(163deg) brightness(92%) contrast(85%);
+}
+
+lens-catalogue::part(data-tree-element-toggle-icon-open) {
+  transform: rotate(90deg);
+}
+
+lens-catalogue::part(query-add-button-icon) {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(213deg) brightness(100%) contrast(100%);
+  width: 21px;
+}
+
+

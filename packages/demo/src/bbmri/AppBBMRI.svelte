@@ -27,24 +27,18 @@
   codesystem loinc: 'http://loinc.org'
 
   context Patient
+  	
+  BBMRI_STRAT_AGE_STRATIFIER
 
-  DKTK_STRAT_GENDER_STRATIFIER
+  BBMRI_STRAT_GENDER_STRATIFIER
 
-  DKTK_STRAT_AGE_STRATIFIER
+  BBMRI_STRAT_CUSTODIAN_STRATIFIER
 
-  DKTK_STRAT_DECEASED_STRATIFIER
+  BBMRI_STRAT_DIAGNOSIS_STRATIFIER
 
-  DKTK_STRAT_DIAGNOSIS_STRATIFIER
+  BBMRI_STRAT_SAMPLE_TYPE_STRATIFIER
 
-  DKTK_STRAT_SPECIMEN_STRATIFIER
-
-  DKTK_STRAT_PROCEDURE_STRATIFIER
-
-  DKTK_STRAT_MEDICATION_STRATIFIER
-
-  DKTK_STRAT_ENCOUNTER_STRATIFIER
-
-  DKTK_STRAT_DEF_IN_INITIAL_POPULATION
+  BBMRI_STRAT_DEF_SPECIMEN   
 `;
 
   const catalogueText: CatalogueText = {
@@ -200,6 +194,9 @@
       style={`max-width: ${catalogueopen ? "1000px" : "288px"}`}
     >
       <lens-catalogue
+        toggleIconUrl='right-arrow-svgrepo-com.svg'
+        addIconUrl='long-right-arrow-svgrepo-com.svg'
+        collapseButtonIconUrl='right-arrow-svgrepo-com.svg'
         treeData={JSON.stringify(mockCatalogueData)}
         texts={catalogueText}
         toggle={{ collapsable: true, open: false }}
