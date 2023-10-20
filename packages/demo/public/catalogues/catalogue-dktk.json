@@ -17887,15 +17887,16 @@
                 ]
             },
             {
-                "key": "uicc",
+                "key": "21908-9",
                 "name": "UICC Stadium",
-                "childCategories": [
+                "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                "fieldType": "single-select",
+                "type": "EQUALS",
+                "criteria": [
                     {
-                        "key": "21908-9",
+                        "key": "0",
                         "name": "0",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "0",
                         "criteria": [
                             {
                                 "key": "0",
@@ -17915,11 +17916,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
+                        "key": "IA",
                         "name": "IA",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "IA",
                         "criteria": [
                             {
                                 "key": "IA",
@@ -17939,11 +17938,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
+                        "key": "IB",
                         "name": "IB",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "IB",
                         "criteria": [
                             {
                                 "key": "IB",
@@ -17963,11 +17960,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
+                        "key": "IC",
                         "name": "IC",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "IC",
                         "criteria": [
                             {
                                 "key": "IC",
@@ -17977,11 +17972,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
+                        "key": "II",
                         "name": "II",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "II",
                         "criteria": [
                             {
                                 "key": "II",
@@ -18016,11 +18009,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
+                        "key": "III",
                         "name": "III",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "III",
                         "criteria": [
                             {
                                 "key": "III",
@@ -18055,11 +18046,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
+                        "key": "IV",
                         "name": "IV",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "description": "IV",
                         "criteria": [
                             {
                                 "key": "IV",
@@ -18084,11 +18073,9 @@
                         ]
                     },
                     {
-                        "key": "21908-9",
-                        "name": "IA",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
+                        "key": "IS",
+                        "name": "IS",
+                        "description": "IS",
                         "criteria": [
                             {
                                 "key": "IS",
@@ -18096,145 +18083,6 @@
                                 "description": "IS"
                             }
                         ]
-                    }
-                ]
-            },
-            {
-                "key": "21908-9",
-                "name": "UICC Stadium",
-                "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                "fieldType": "single-select",
-                "type": "EQUALS",
-                "criteria": [
-                    {
-                        "key": "0is",
-                        "name": "0is",
-                        "description": "0is"
-                    },
-                    {
-                        "key": "0a",
-                        "name": "0a",
-                        "description": "0a"
-                    },
-                    {
-                        "key": "0",
-                        "name": "0",
-                        "description": "0"
-                    },
-                    {
-                        "key": "IA2",
-                        "name": "IA2",
-                        "description": "IA2"
-                    },
-                    {
-                        "key": "IA1",
-                        "name": "IA1",
-                        "description": "IA1"
-                    },
-                    {
-                        "key": "IA",
-                        "name": "IA",
-                        "description": "IA"
-                    },
-                    {
-                        "key": "IB2",
-                        "name": "IB2",
-                        "description": "IB2"
-                    },
-                    {
-                        "key": "IB1",
-                        "name": "IB1",
-                        "description": "IB1"
-                    },
-                    {
-                        "key": "IB",
-                        "name": "IB",
-                        "description": "IB"
-                    },
-                    {
-                        "key": "IIC",
-                        "name": "IIC",
-                        "description": "IIC"
-                    },
-                    {
-                        "key": "IIB",
-                        "name": "IIB",
-                        "description": "IIB"
-                    },
-                    {
-                        "key": "IIA2",
-                        "name": "IIA2",
-                        "description": "IIA2"
-                    },
-                    {
-                        "key": "IIA1",
-                        "name": "IIA1",
-                        "description": "IIA1"
-                    },
-                    {
-                        "key": "IIA",
-                        "name": "IIA",
-                        "description": "IIA"
-                    },
-                    {
-                        "key": "II",
-                        "name": "II",
-                        "description": "II"
-                    },
-                    {
-                        "key": "IIIC2",
-                        "name": "IIIC2",
-                        "description": "IIIC2"
-                    },
-                    {
-                        "key": "IIIC1",
-                        "name": "IIIC1",
-                        "description": "IIIC1"
-                    },
-                    {
-                        "key": "IIIC",
-                        "name": "IIIC",
-                        "description": "IIIC"
-                    },
-                    {
-                        "key": "IIIB",
-                        "name": "IIIB",
-                        "description": "IIIB"
-                    },
-                    {
-                        "key": "IIIA",
-                        "name": "IIIA",
-                        "description": "IIIA"
-                    },
-                    {
-                        "key": "III",
-                        "name": "III",
-                        "description": "III"
-                    },
-                    {
-                        "key": "IVC",
-                        "name": "IVC",
-                        "description": "IVC"
-                    },
-                    {
-                        "key": "IVB",
-                        "name": "IVB",
-                        "description": "IVB"
-                    },
-                    {
-                        "key": "IVA",
-                        "name": "IVA",
-                        "description": "IVA"
-                    },
-                    {
-                        "key": "IV",
-                        "name": "IV",
-                        "description": "IV"
-                    },
-                    {
-                        "key": "IS",
-                        "name": "IS",
-                        "description": "IS"
                     }
                 ]
             },

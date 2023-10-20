@@ -10,7 +10,7 @@ export type Category = {
     system?: string;
     fieldType: 'single-select' | 'autocomplete' | 'number';
     type: 'EQUALS' | 'BETWEEN';
-    criteria: | Criteria[];
+    criteria: | Criteria[] | CriteriaGroup[];
     
 }
 
@@ -19,6 +19,13 @@ export type Criteria = {
     name: string;
     description?: string;
     aggregatedValue?: AggregatedValue[][]
+}
+
+export type CriteriaGroup = {
+    key: string,
+    name: string;
+    description?: string;
+    criteria: | Criteria[];
 }
 
 export type AggregatedValue = {
