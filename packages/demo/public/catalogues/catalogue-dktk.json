@@ -17887,6 +17887,219 @@
                 ]
             },
             {
+                "key": "uicc",
+                "name": "UICC Stadium",
+                "childCategories": [
+                    {
+                        "key": "21908-9",
+                        "name": "0",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "0",
+                                "name": "0",
+                                "description": "0"
+                            },
+                            {
+                                "key": "0a",
+                                "name": "0a",
+                                "description": "0a"
+                            },
+                            {
+                                "key": "0is",
+                                "name": "0is",
+                                "description": "0is"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "IA",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "IA",
+                                "name": "IA",
+                                "description": "IA"
+                            },
+                            {
+                                "key": "IA1",
+                                "name": "IA1",
+                                "description": "IA1"
+                            },
+                            {
+                                "key": "IA2",
+                                "name": "IA2",
+                                "description": "IA2"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "IB",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "IB",
+                                "name": "IB",
+                                "description": "IB"
+                            },
+                            {
+                                "key": "IB1",
+                                "name": "IB1",
+                                "description": "IB1"
+                            },
+                            {
+                                "key": "IB2",
+                                "name": "IB2",
+                                "description": "IB2"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "IC",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "IC",
+                                "name": "IC",
+                                "description": "IC"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "II",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "II",
+                                "name": "II",
+                                "description": "II"
+                            },
+                            {
+                                "key": "IIA",
+                                "name": "IIA",
+                                "description": "IIA"
+                            },
+                            {
+                                "key": "IIA2",
+                                "name": "IIA2",
+                                "description": "IIA2"
+                            },
+                            {
+                                "key": "IIA1",
+                                "name": "IIA1",
+                                "description": "IIA1"
+                            },
+                            {
+                                "key": "IIB",
+                                "name": "IIB",
+                                "description": "IIB"
+                            },
+                            {
+                                "key": "IIC",
+                                "name": "IIC",
+                                "description": "IIC"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "III",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "III",
+                                "name": "III",
+                                "description": "III"
+                            },
+                            {
+                                "key": "IIIA",
+                                "name": "IIIA",
+                                "description": "IIIA"
+                            },
+                            {
+                                "key": "IIIB",
+                                "name": "IIIB",
+                                "description": "IIIB"
+                            },
+                            {
+                                "key": "IIIC",
+                                "name": "IIIC",
+                                "description": "IIIC"
+                            },
+                            {
+                                "key": "IIIC1",
+                                "name": "IIIC1",
+                                "description": "IIIC1"
+                            },
+                            {
+                                "key": "IIIC2",
+                                "name": "IIIC2",
+                                "description": "IIIC2"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "IV",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "IV",
+                                "name": "IV",
+                                "description": "IV"
+                            },
+                            {
+                                "key": "IVA",
+                                "name": "IVA",
+                                "description": "IVA"
+                            },
+                            {
+                                "key": "IVB",
+                                "name": "IVB",
+                                "description": "IVB"
+                            },
+                            {
+                                "key": "IVC",
+                                "name": "IVC",
+                                "description": "IVC"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "21908-9",
+                        "name": "IA",
+                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
+                        "fieldType": "single-select",
+                        "type": "EQUALS",
+                        "criteria": [
+                            {
+                                "key": "IS",
+                                "name": "IS",
+                                "description": "IS"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "key": "21908-9",
                 "name": "UICC Stadium",
                 "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
