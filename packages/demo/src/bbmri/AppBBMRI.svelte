@@ -20,26 +20,7 @@
     specimenMeasureBbmriProd,
   ];
 
-  const cqlHeader = `library Retrieve
-  using FHIR version '4.0.0'
-  include FHIRHelpers version '4.0.0'
-
-  codesystem loinc: 'http://loinc.org'
-
-  context Patient
-  	
-  BBMRI_STRAT_AGE_STRATIFIER
-
-  BBMRI_STRAT_GENDER_STRATIFIER
-
-  BBMRI_STRAT_CUSTODIAN_STRATIFIER
-
-  BBMRI_STRAT_DIAGNOSIS_STRATIFIER
-
-  BBMRI_STRAT_SAMPLE_TYPE_STRATIFIER
-
-  BBMRI_STRAT_DEF_SPECIMEN   
-`;
+  const backendMeasures = `BBMRI_STRAT_DEF_IN_INITIAL_POPULATION`
 
   const catalogueText: CatalogueText = {
     group: "Group",
@@ -165,7 +146,7 @@
   <div class="menu">
     <a href="https://www.bbmri-eric.eu/about/">About Us</a>
     <a href="mailto:locator@helpdesk.bbmri-eric.eu">Contact</a>
-    <a href="https://www.bbmri-eric.eu/bbmri-sample-and-data-portal/">Logout</a>
+    <!-- <a href="https://www.bbmri-eric.eu/bbmri-sample-and-data-portal/">Logout</a> -->
   </div>
 </header>
 <main>
@@ -184,14 +165,13 @@
     title="Search"
     {measures}
     backendConfig={JSON.stringify(backendConfig)}
-    {cqlHeader}
+    {backendMeasures}
   />
     </lens-search-bar-multiple>
   </div>
   <div class="grid">
     <div
       class="catalogue"
-      style={`max-width: ${catalogueopen ? "1000px" : "288px"}`}
     >
       <lens-catalogue
         toggleIconUrl='right-arrow-svgrepo-com.svg'

@@ -32,6 +32,10 @@ export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: bool
    * DISCUSS: why is this even an array?
    * in bbmri there is only concatted to the string
    */
+
+  /**
+   * TODO: make configurable
+   */
   codesystems = [
     // NOTE: We always need loinc, as the Deceased Stratifier is computed with it!!!
     "codesystem loinc: 'http://loinc.org'"
@@ -43,7 +47,7 @@ export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: bool
     "\n"
 
   let singletons: string = "";
-  singletons = backendMeasures
+  singletons = backendMeasures + "\n"
   singletons += resolveOperation(query)
 
   if (query.children.length == 0) {

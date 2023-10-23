@@ -130,7 +130,6 @@ main>div {
 .catalogue {
   padding: var(--gap-s) 0;
   display: flex;
-  overflow: hidden;
   background-color: var(--white);
   transition: all 0.5s ease;
 }
