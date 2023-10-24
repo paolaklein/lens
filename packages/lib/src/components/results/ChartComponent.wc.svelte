@@ -28,6 +28,8 @@
     import type { ResponseStore } from "../../types/backend";
     import type { Site } from "../../types/response";
 
+    const pieGenerateLabelsLegend = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+
     export let title: string = ""; // e.g. 'Gender Distribution'
     export let catalogueGroupCode: string = ""; // e.g. "gender"
     export let indexAxis: string = "x";
@@ -100,6 +102,17 @@
                 legend: {
                     display: displayLegends,
                     position: "bottom",
+                    labels: {
+                        generateLabels: (chart) => {
+                            const labels = pieGenerateLabelsLegend(chart);
+                            let result = labels.map((label) => {
+                                const header = headers.get(label.text)
+                                if (header) label.text = header;
+                                return label
+                            })
+                            return result
+                        }
+                    }
                 },
                 tooltip: {
                    callbacks: {
