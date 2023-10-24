@@ -114,14 +114,14 @@
             },
             scales: {
                 y: {
-                    display: true,
+                    display: (chartType !== "pie"),
                     title: {
                         display: true,
                         text: yAxisTitle
-                    }
+                    },
                 },
                 x: {
-                    display: true,
+                    display: (chartType !== "pie"),
                     title: {
                         display: true,
                         text: xAxisTitle
