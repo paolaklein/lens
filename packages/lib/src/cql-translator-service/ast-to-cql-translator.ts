@@ -33,8 +33,10 @@ export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: bool
    * in bbmri there is only concatted to the string
    */
   codesystems = [
-    // NOTE: We always need loinc, as the Deceased Stratifier is computed with it!!!
-    "codesystem loinc: 'http://loinc.org'"
+    // we always need loinc, as the Deceased Stratifier is computed with it!!!
+    "codesystem loinc: 'http://loinc.org'",
+    // We always need SampleMaterialType as the specimen measure is computed with it
+    "codesystem SampleMaterialType: 'https://fhir.bbmri.de/CodeSystem/SampleMaterialType'"
   ]
 
   const cqlHeader = "library Retrieve\n" +

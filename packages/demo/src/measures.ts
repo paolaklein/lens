@@ -66,7 +66,6 @@ First(
 )
 
 define AgeClass:
-if (Patient.birthDate is null) then 'unknown' else ToString((AgeInYears() div 10) * 10)
 if (PrimaryDiagnosis.onset is null) then 'unknown' else ToString((AgeInYearsAt(FHIRHelpers.ToDateTime(PrimaryDiagnosis.onset)) div 10) * 10)
 
 define PatientDeceased:
@@ -928,7 +927,11 @@ export const dktkSpecimenMeasure = {
     ],
   },
   cql: `
-DKTK_STRAT_SPECIMEN_STRATIFIER
+BBMRI_STRAT_SAMPLE_TYPE_STRATIFIER
+
+BBMRI_STRAT_DEF_SPECIMEN
+if InInitialPopulation then [Specimen] else {} as List<Specimen>
+
 `,
 };
 
