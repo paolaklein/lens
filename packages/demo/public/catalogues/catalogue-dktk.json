@@ -17912,25 +17912,30 @@
                                 "description": "0"
                             },
                             {
-                                "key": "0a",
-                                "name": "0a",
-                                "description": "0a"
-                            },
-                            {
                                 "key": "0is",
                                 "name": "0is",
                                 "description": "0is"
+                            },
+                            {
+                                "key": "0a",
+                                "name": "0a",
+                                "description": "0a"
                             }
                         ]
                     },
                     {
                         "key": "21908-9",
-                        "subCategoryName": "IA",
+                        "subCategoryName": "I",
                         "name": "UICC Stadium",
                         "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
                         "fieldType": "single-select",
                         "type": "EQUALS",
                         "criteria": [
+                            {
+                                "key": "I",
+                                "name": "I",
+                                "description": "I"
+                            },
                             {
                                 "key": "IA",
                                 "name": "IA",
@@ -17945,17 +17950,7 @@
                                 "key": "IA2",
                                 "name": "IA2",
                                 "description": "IA2"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "21908-9",
-                        "subCategoryName": "IB",
-                        "name": "UICC Stadium",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
-                        "criteria": [
+                            },
                             {
                                 "key": "IB",
                                 "name": "IB",
@@ -17970,21 +17965,11 @@
                                 "key": "IB2",
                                 "name": "IB2",
                                 "description": "IB2"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "21908-9",
-                        "subCategoryName": "IC",
-                        "name": "UICC Stadium",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
-                        "criteria": [
+                            },
                             {
-                                "key": "IC",
-                                "name": "IC",
-                                "description": "IC"
+                                "key": "IS",
+                                "name": "IS",
+                                "description": "IS"
                             }
                         ]
                     },
@@ -18097,21 +18082,6 @@
                                 "description": "IVC"
                             }
                         ]
-                    },
-                    {
-                        "key": "21908-9",
-                        "subCategoryName": "IS",
-                        "name": "UICC Stadium",
-                        "system": "http://dktk.dkfz.de/fhir/onco/core/CodeSystem/UiccstadiumCS",
-                        "fieldType": "single-select",
-                        "type": "EQUALS",
-                        "criteria": [
-                            {
-                                "key": "IS",
-                                "name": "IS",
-                                "description": "IS"
-                            }
-                        ]
                     }
                 ]
             },
@@ -18184,11 +18154,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1a"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1a"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18201,11 +18171,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1a1"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1a1"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18218,11 +18188,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1a2"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1a2"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18235,11 +18205,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1b"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1b"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18252,11 +18222,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1b1"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1b1"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18269,11 +18239,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1b2"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1b2"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18286,11 +18256,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1c"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1c"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18303,11 +18273,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1c1"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1c1"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18320,11 +18290,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1c2"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1c2"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18337,11 +18307,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1c3"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1c3"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18354,11 +18324,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1d"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1d"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18371,11 +18341,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "1mi"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "1mi"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18398,11 +18368,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18415,11 +18385,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2a"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2a"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18432,11 +18402,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2a1"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2a1"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18449,11 +18419,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2a2"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2a2"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18466,11 +18436,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2b"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2b"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18483,11 +18453,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2c"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2c"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18500,11 +18470,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "2d"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "2d"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18527,11 +18497,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "3"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "3"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18544,11 +18514,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "3a"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "3a"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18561,11 +18531,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "3b"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "3b"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18578,11 +18548,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "3c"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "3c"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18595,11 +18565,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "3d"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "3d"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18622,11 +18592,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "4"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "4"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18639,11 +18609,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "4a"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "4a"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18656,11 +18626,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "4b"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "4b"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18673,11 +18643,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "4c"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "4c"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18690,11 +18660,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "4d"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "4d"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18707,11 +18677,38 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "4e"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "4e"
+                                                "name": "0"
+                                            }
+                                            ]
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "key": "21905-5",
+                                "name": "TNM-T",
+                                "subCategoryName": "a",
+                                "system": "",
+                                "fieldType": "single-select",
+                                "type": "EQUALS",
+                                "criteria": [
+                                    {
+                                        "key": "a",
+                                        "name": "a",
+                                        "description": "a",
+                                        "aggregatedValue": [
+                                            [
+                                            {
+                                                "value": "21905-5",
+                                                "name": "0"
+                                            },
+                                            {
+                                                "value": "21899-0",
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18727,33 +18724,6 @@
                                 "type": "EQUALS",
                                 "criteria": [
                                     {
-                                        "key": "a",
-                                        "name": "a",
-                                        "description": "a",
-                                        "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21905-5",
-                                                "name": "a"
-                                            },
-                                            {
-                                                "value": "21899-0",
-                                                "name": "a"
-                                            }
-                                            ]
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "key": "21905-5",
-                                "name": "TNM-T",
-                                "subCategoryName": "is (Mamma)",
-                                "system": "",
-                                "fieldType": "single-select",
-                                "type": "EQUALS",
-                                "criteria": [
-                                    {
                                         "key": "is",
                                         "name": "is",
                                         "description": "is",
@@ -18761,11 +18731,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "is"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "is"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18778,11 +18748,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "is(DCIS)"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "is(DCIS)"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18795,11 +18765,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "is(LCIS)"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "is(LCIS)"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18812,11 +18782,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "is(Paget)"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "is(Paget)"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18829,11 +18799,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "is(pd)"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "is(pd)"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18846,11 +18816,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "is(pu)"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "is(pu)"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18873,11 +18843,11 @@
                                             [
                                             {
                                                 "value": "21905-5",
-                                                "name": "X"
+                                                "name": "0"
                                             },
                                             {
                                                 "value": "21899-0",
-                                                "name": "X"
+                                                "name": "0"
                                             }
                                             ]
                                         ]
@@ -18894,382 +18864,99 @@
                         "type": "EQUALS",
                         "criteria": [
                             {
-                                "key": "(sn)(mol+)",
-                                "name": "(sn)(mol+)",
-                                "description": "(sn)(mol+)"
+                                "key": "0",
+                                "name": "0",
+                                "description": "0"
                             },
                             {
-                                "key": "(sn)(mol-)",
-                                "name": "(sn)(mol-)",
-                                "description": "(sn)(mol-)"
+                                "key": "0(i+)",
+                                "name": "0(i+)",
+                                "description": "0(i+)"
                             },
                             {
-                                "key": "(sn)(i+)",
-                                "name": "(sn)(i+)",
-                                "description": "(sn)(i+)"
+                                "key": "0(i-)",
+                                "name": "0(i-)",
+                                "description": "0(i-)"
                             },
                             {
-                                "key": "(sn)(i-)",
-                                "name": "(sn)(i-)",
-                                "description": "(sn)(i-)"
+                                "key": "0(mol+)",
+                                "name": "0(mol+)",
+                                "description": "0(mol+)"
                             },
                             {
-                                "key": "(mol+)",
-                                "name": "(mol+)",
-                                "description": "(mol+)"
+                                "key": "0(mol-)",
+                                "name": "0(mol-)",
+                                "description": "0(mol-)"
                             },
                             {
-                                "key": "(mol-)",
-                                "name": "(mol-)",
-                                "description": "(mol-)"
+                                "key": "1",
+                                "name": "1",
+                                "description": "1"
                             },
                             {
-                                "key": "(i+)",
-                                "name": "(i+)",
-                                "description": "(i+)"
+                                "key": "1a",
+                                "name": "1a",
+                                "description": "1a"
                             },
                             {
-                                "key": "(i-)",
-                                "name": "(i-)",
-                                "description": "(i-)"
+                                "key": "1b",
+                                "name": "1b",
+                                "description": "1b"
+                            },
+                            {
+                                "key": "1c",
+                                "name": "1c",
+                                "description": "1c"
+                            },
+                            {
+                                "key": "1mi",
+                                "name": "1mi",
+                                "description": "1mi"
+                            },
+                            {
+                                "key": "2",
+                                "name": "2",
+                                "description": "2"
+                            },
+                            {
+                                "key": "2a",
+                                "name": "2a",
+                                "description": "2a"
+                            },
+                            {
+                                "key": "2b",
+                                "name": "2b",
+                                "description": "2b"
+                            },
+                            {
+                                "key": "2c",
+                                "name": "2c",
+                                "description": "2c"
+                            },
+                            {
+                                "key": "3",
+                                "name": "3",
+                                "description": "3"
+                            },
+                            {
+                                "key": "3a",
+                                "name": "3a",
+                                "description": "3a"
+                            },
+                            {
+                                "key": "3b",
+                                "name": "3b",
+                                "description": "3b"
+                            },
+                            {
+                                "key": "3c",
+                                "name": "3c",
+                                "description": "3c"
                             },
                             {
                                 "key": "X",
                                 "name": "X",
                                 "description": "X"
-                            },
-                            {
-                                "key": "X(sn)",
-                                "name": "X(sn)",
-                                "description": "X(sn)"
-                            },
-                            {
-                                "key": "0",
-                                "name": "0",
-                                "description": "0",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "0"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "0"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "0(sn)",
-                                "name": "0(sn)",
-                                "description": "0(sn)"
-                            },
-                            {
-                                "key": "0(i+)",
-                                "name": "0(i+)",
-                                "description": "0(i+)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "0(i+)"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "0(i+)"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "0(i-)",
-                                "name": "0(i-)",
-                                "description": "0(i-)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "0(i-)"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "0(i-)"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "0(mol+)",
-                                "name": "0(mol+)",
-                                "description": "0(mol+)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "0(mol+)"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "0(mol+)"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "0(mol-)",
-                                "name": "0(mol-)",
-                                "description": "0(mol-)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "0(mol-)"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "0(mol-)"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "1",
-                                "name": "1",
-                                "description": "1",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "1"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "1"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "1a",
-                                "name": "1a",
-                                "description": "1a",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "1a"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "1a"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "1b",
-                                "name": "1b",
-                                "description": "1b",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "1b"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "1b"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "1c",
-                                "name": "1c",
-                                "description": "1c",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "1c"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "1c"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "1mi",
-                                "name": "1mi",
-                                "description": "1mi",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "1mi"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "1mi"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "2",
-                                "name": "2",
-                                "description": "2",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "2"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "2"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "2a",
-                                "name": "2a",
-                                "description": "2a",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "2a"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "2a"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "2b",
-                                "name": "2b",
-                                "description": "2b",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "2b"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "2b"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "2c",
-                                "name": "2c",
-                                "description": "2c",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "2c"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "2c"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "3",
-                                "name": "3",
-                                "description": "3",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "3"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "3"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "3a",
-                                "name": "3a",
-                                "description": "3a",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "3a"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "3a"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "3b",
-                                "name": "3b",
-                                "description": "3b",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "3b"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "3b"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "3c",
-                                "name": "3c",
-                                "description": "3c",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "3c"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "3c"
-                                            }
-                                            ]
-                                        ]
-                            },
-                            {
-                                "key": "X",
-                                "name": "X",
-                                "description": "X",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21906-3",
-                                                "name": "X"
-                                            },
-                                            {
-                                                "value": "21900-6",
-                                                "name": "X"
-                                            }
-                                            ]
-                                        ]
                             }
                         ]
                     },
@@ -19283,192 +18970,60 @@
                             {
                                 "key": "0",
                                 "name": "0",
-                                "description": "0",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "0"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "0"
-                                            }
-                                            ]
-                                        ]
+                                "description": "0"
                             },
                             {
                                 "key": "1",
                                 "name": "1",
-                                "description": "1",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "1"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "1"
-                                            }
-                                            ]
-                                        ]
+                                "description": "1"
                             },
                             {
                                 "key": "1a",
                                 "name": "1a",
-                                "description": "1a",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "1a"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "1a"
-                                            }
-                                            ]
-                                        ]
+                                "description": "1a"
                             },
                             {
                                 "key": "1b",
                                 "name": "1b",
-                                "description": "1b",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "1b"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "1b"
-                                            }
-                                            ]
-                                        ]
+                                "description": "1b"
                             },
                             {
                                 "key": "1c",
                                 "name": "1c",
-                                "description": "1c",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "1c"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "1c"
-                                            }
-                                            ]
-                                        ]
+                                "description": "1c"
                             },
                             {
                                 "key": "1d",
                                 "name": "1d",
-                                "description": "1d",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "1d"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "1d"
-                                            }
-                                            ]
-                                        ]
+                                "description": "1d"
                             },
                             {
                                 "key": "1e",
                                 "name": "1e",
-                                "description": "1e",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "1e"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "1e"
-                                            }
-                                            ]
-                                        ]
+                                "description": "1e"
                             },
                             {
                                 "key": "0(i-)",
                                 "name": "0(i-)",
-                                "description": "0(i-)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "0(i-)"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "0(i-)"
-                                            }
-                                            ]
-                                        ]
+                                "description": "0(i-)"
                             },
                             {
                                 "key": "0(i+)",
                                 "name": "0(i+)",
-                                "description": "0(i+)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "0(i+)"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "0(i+)"
-                                            }
-                                            ]
-                                        ]
+                                "description": "0(i+)"
                             },
                             {
                                 "key": "0(mol-)",
                                 "name": "0(mol-)",
-                                "description": "0(mol-)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "0(mol-)"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "0(mol-)"
-                                            }
-                                            ]
-                                        ]
+                                "description": "0(mol-)"
                             },
                             {
                                 "key": "0(mol+)",
                                 "name": "0(mol+)",
-                                "description": "0(mol+)",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21907-1",
-                                                "name": "0(mol+)"
-                                            },
-                                            {
-                                                "value": "21901-4",
-                                                "name": "0(mol+)"
-                                            }
-                                            ]
-                                        ]
+                                "description": "0(mol+)"
                             }
                         ]
-},
+                    },
                     {
                         "key": "42030-7",
                         "name": "TNM-m-Symbol",
@@ -19479,158 +19034,50 @@
                             {
                                 "key": "m",
                                 "name": "Kennzeichnet Vorhandensein multipler Primärtumoren in einem Bezirk",
-                                "description": "Kennzeichnet Vorhandensein multipler Primärtumoren in einem Bezirk",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "m"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "m"
-                                            }
-                                            ]
-                                        ]
+                                "description": "Kennzeichnet Vorhandensein multipler Primärtumoren in einem Bezirk"
                             },
                             {
                                 "key": "2",
                                 "name": "(2) simultaner Tumoren",
-                                "description": "(2) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "2"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "2"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(2) simultaner Tumoren"
                             },
                             {
                                 "key": "3",
                                 "name": "(3) simultaner Tumoren",
-                                "description": "(3) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "3"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "3"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(3) simultaner Tumoren"
                             },
                             {
                                 "key": "4",
                                 "name": "(4) simultaner Tumoren",
-                                "description": "(4) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "4"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "4"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(4) simultaner Tumoren"
                             },
                             {
                                 "key": "5",
                                 "name": "(5) simultaner Tumoren",
-                                "description": "(5) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "5"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "5"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(5) simultaner Tumoren"
                             },
                             {
                                 "key": "6",
                                 "name": "(6) simultaner Tumoren",
-                                "description": "(6) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "6"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "6"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(6) simultaner Tumoren"
                             },
                             {
                                 "key": "7",
                                 "name": "(7) simultaner Tumoren",
-                                "description": "(7) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "7"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "7"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(7) simultaner Tumoren"
                             },
                             {
                                 "key": "8",
                                 "name": "(8) simultaner Tumoren",
-                                "description": "(8) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "8"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "8"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(8) simultaner Tumoren"
                             },
                             {
                                 "key": "9",
                                 "name": "(9) simultaner Tumoren",
-                                "description": "(9) simultaner Tumoren",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "59479-6",
-                                                "name": "9"
-                                            },
-                                            {
-                                                "value": "59479-6",
-                                                "name": "9"
-                                            }
-                                            ]
-                                        ]
+                                "description": "(9) simultaner Tumoren"
                             }
                         ]
-},
+                    },
                     {
                         "key": "59479-6",
                         "name": "TNM-y-Symbol",
@@ -19641,19 +19088,7 @@
                             {
                                 "key": "y",
                                 "name": "Klassifikation erfolgte während oder nach initialer multimodaler Therapie",
-                                "description": "Klassifikation erfolgte während oder nach initialer multimodaler Therapie",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21983-2",
-                                                "name": "y"
-                                            },
-                                            {
-                                                "value": "21983-2",
-                                                "name": "y"
-                                            }
-                                            ]
-                                        ]
+                                "description": "Klassifikation erfolgte während oder nach initialer multimodaler Therapie"
                             }
                         ]
                     },
@@ -19667,19 +19102,7 @@
                             {
                                 "key": "r",
                                 "name": "Klassifikation erfolgte zur Beurteilung eines Rezidivs",
-                                "description": "Klassifikation erfolgte zur Beurteilung eines Rezidivs",
-                                "aggregatedValue": [
-                                            [
-                                            {
-                                                "value": "21983-2",
-                                                "name": "r"
-                                            },
-                                            {
-                                                "value": "21983-2",
-                                                "name": "r"
-                                            }
-                                            ]
-                                        ]
+                                "description": "Klassifikation erfolgte zur Beurteilung eines Rezidivs"
                             }
                         ]
                     }
@@ -20069,6 +19492,7 @@
     {
         "key": "biosamples",
         "name": "Bioproben",
+        "infoButtonText": ["Bioprobentypen der Patienten gemäß der ausgewählten Kriterien. Es werden auch Einträge angezeigt, die ggfs. außerhalb der Suchkriterien liegen."],
         "childCategories": [
             {
                 "key": "sample_kind",
@@ -20076,27 +19500,49 @@
                 "system": "",
                 "fieldType": "single-select",
                 "type": "EQUALS",
-                "infoButtonText": ["Materialtyp der Bioprobe. Ob die Probe explizit Tumorzellen enthält, muss individuell abgeklärt werden."],
+                "infoButtonText": ["Materialtyp der Bioprobe"],
                 "criteria": [
                     {
-                        "key": "tumor-tissue-ffpe",
-                        "name": "Tumorgewebe (FFPE)",
-                        "description": "Tumorgewebe (FFPE)"
+                        "key": "serum",
+                        "name": "Serum",
+                        "description": "Serum",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "blood-serum"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "serum"
+                                }
+                            ]
+                        ]
                     },
                     {
-                        "key": "tumor-tissue-frozen",
-                        "name": "Tumorgewebe (Kryo/Frisch)",
-                        "description": "Tumorgewebe (Kryo/Frisch)"
-                    },
-                    {
-                        "key": "normal-tissue-ffpe",
-                        "name": "Normalgewebe (FFPE)",
-                        "description": "Normalgewebe (FFPE)"
-                    },
-                    {
-                        "key": "normal-tissue-frozen",
-                        "name": "Normalgewebe (Kryo/Frisch)",
-                        "description": "Normalgewebe (Kryo/Frisch)"
+                        "key": "tissue-frozen",
+                        "name": "Gewebe schockgefroren",
+                        "description": "Gewebe schockgefroren",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tissue-frozen"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tumor-tissue-frozen"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "normal-tissue-frozen"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "other-tissue-frozen"
+                                }
+                            ]
+                        ]
                     },
                     {
                         "key": "whole-blood",
@@ -20104,14 +19550,84 @@
                         "description": "Vollblut"
                     },
                     {
-                        "key": "blood-serum",
-                        "name": "Serum",
-                        "description": "Serum"
-                    },
-                    {
                         "key": "blood-plasma",
                         "name": "Plasma",
-                        "description": "Plasma"
+                        "description": "Plasma",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "blood-plasma"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "plasma-edta"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "plasma-citrat"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "plasma-heparin"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "plasma-cell-free"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "plasma-other"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "plasma"
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "key": "derivative-other",
+                        "name": "Derivat, Andere",
+                        "description": "Derivat, Andere",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "derivative-other"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "derivative"
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "key": "tissue-other",
+                        "name": "Gewebe, Andere Konservierungsart",
+                        "description": "Gewebe, Andere Konservierungsart",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tissue-other"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tissue-paxgene-or-else"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tissue"
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "key": "peripheral-blood-cells-vital",
+                        "name": "Periphere mononukleäre Blutzellen (PBMC)",
+                        "description": "Periphere mononukleäre Blutzellen (PBMC)"
                     },
                     {
                         "key": "urine",
@@ -20119,14 +19635,62 @@
                         "description": "Urin"
                     },
                     {
+                        "key": "rna",
+                        "name": "RNA",
+                        "description": "RNA"
+                    },
+                    {
+                        "key": "liquid-other",
+                        "name": "Flüssigprobe, Andere",
+                        "description": "Flüssigprobe, Andere",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "liquid-other"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "liquid"
+                                }
+                            ]
+                        ]
+                    },
+                    {
+                        "key": "buffy-coat",
+                        "name": "Buffycoat",
+                        "description": "Buffycoat"
+                    },
+                    {
+                        "key": "dna",
+                        "name": "DNA",
+                        "description": "DNA",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "dna"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "cf-dna"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "g-dna"
+                                }
+                            ]
+                        ]
+                    },
+                    {
                         "key": "csf-liquor",
-                        "name": "Liquor/CSF",
-                        "description": "Liquor/CSF"
+                        "name": "Liquor",
+                        "description": "Liquor"
                     },
                     {
                         "key": "stool-faeces",
-                        "name": "Stuhl/Kot",
-                        "description": "Stuhl/Kot"
+                        "name": "Stuhl",
+                        "description": "Stuhl"
                     },
                     {
                         "key": "bone-marrow",
@@ -20134,14 +19698,43 @@
                         "description": "Knochenmark"
                     },
                     {
-                        "key": "dna",
-                        "name": "DNA",
-                        "description": "DNA"
+                        "key": "tissue-ffpe",
+                        "name": "Gewebe FFPE",
+                        "description": "Gewebe FFPE",
+                        "aggregatedValue": [
+                            [
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tissue-ffpe"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tumor-tissue-ffpe"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "normal-tissue-ffpe"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "other-tissue-ffpe"
+                                },
+                                {
+                                    "value": "sample_kind",
+                                    "name": "tissue-formalin"
+                                }
+                            ]
+                        ]
                     },
                     {
-                        "key": "rna",
-                        "name": "RNA",
-                        "description": "RNA"
+                        "key": "ascites",
+                        "name": "Aszites",
+                        "description": "Aszites"
+                    },
+                    {
+                        "key": "saliva",
+                        "name": "Speichel",
+                        "description": "Speichel"
                     }
                 ]
             }
