@@ -15,6 +15,7 @@
     import Chart, { type ChartTypeRegistry } from "chart.js/auto";
     import { onMount } from "svelte";
     import {
+        getAggregatedPopulation,
         getAggregatedPopulationForStratumCode,
         getStratifierCodesForGroupCode,
         responseStore,
@@ -27,16 +28,21 @@
     import { catalogueKeyToResponseKeyMap } from "../../stores/mappings";
     import type { ResponseStore } from "../../types/backend";
     import type { Site } from "../../types/response";
+    import InfoButtonComponent from "../buttons/InfoButtonComponent.wc.svelte";
+    import { lensOptions } from "../../stores/options";
 
     export let title: string = ""; // e.g. 'Gender Distribution'
     export let catalogueGroupCode: string = ""; // e.g. "gender"
     export let indexAxis: string = "x";
+    export let xAxisTitle: string = "";
+    export let yAxisTitle: string = "";
     export let clickToAddState: boolean = false;
     let responseGroupCode: string;
     $: responseGroupCode =
         $catalogueKeyToResponseKeyMap.get(catalogueGroupCode);
 
-    export let hintText: string = "";
+    export let tooltips: Map<string, string> = new Map<string, string>();
+    export let headers: Map<string, string> = new Map<string, string>();
     export let displayLegends: boolean = false;
     export let chartType: keyof ChartTypeRegistry = "pie";
     export let perSite: boolean = false;
@@ -44,6 +50,13 @@
     export let groupingDivider: string | null = null;
     export let filterRegex: string | null = null;
     export let groupingLabel: string = "";
+    export let viewScales: boolean = chartType !== "pie" ? true : false;
+
+    let options: any;
+    $: options =
+        ($lensOptions?.chartOptions &&
+            $lensOptions?.chartOptions[catalogueGroupCode]) ||
+        {};
 
     export let backgroundColor: string[] = [
         "#4dc9f6",
@@ -97,19 +110,59 @@
                     display: displayLegends,
                     position: "bottom",
                 },
+                tooltip: {
+                    callbacks: {
+                        title: (context: any) => {
+                            const key = context[0].label || "";
+                            let result = options.tooltips && options.tooltips[key]
+                                ? options.tooltips[key]
+                                : key
+                            return result;
+                        },
+                    },
+                },
+            },
+            scales: {
+                y: {
+                    display: viewScales,
+                    title: {
+                        display: true,
+                        text: yAxisTitle,
+                    },
+                },
+                x: {
+                    display: viewScales,
+                    title: {
+                        display: true,
+                        text: xAxisTitle,
+                    },
+                    ticks:
+                        chartType === "bar"
+                            ? {
+                                  callback: (val: any) => {
+                                      if (indexAxis === "y")
+                                          return val.toString();
+                                      if (typeof val === "string") return val;
+                                      const key: unknown =
+                                          initialChartData.data.labels[val] !==
+                                          undefined
+                                              ? initialChartData.data.labels[
+                                                    val
+                                                ]
+                                              : val.toString();
+                                      if (typeof key !== "string")
+                                          return val.toString();
+                                      let result = headers.get(key)
+                                          ? headers.get(key)
+                                          : key;
+                                      return result;
+                                  },
+                              }
+                            : [],
+                },
             },
         },
     };
-
-    /**
-     * searches the catalogue for the criteria names for the given catalogueGroupCode
-     * and sets them as chart labels
-     * DISCUSSION: needed? if so how do we implement this for bar charts?
-     */
-    // $: {
-    //     if(chartType === 'pie')
-    //         initialChartData.data.labels = getCriteriaNamesFromKey($catalogue, catalogueGroupCode);
-    // }
 
     /**
      * @param chartLabels
@@ -147,23 +200,28 @@
                     },
                 ],
             };
-        } else {
-            dataSet = chartLabels.map((label: string): number => {
-                const stratifierCode = label;
-                const stratifierCodeCount: number =
-                    getAggregatedPopulationForStratumCode(
-                        responseStore,
-                        stratifierCode
-                    );
-                return stratifierCodeCount;
-            });
-        }
+        } 
+
 
         const combinedSubGroupData = combineSubGroups(
             groupingDivider,
             responseStore,
             chartLabels
         );
+
+
+        /**
+         * if aggregations are set, aggregate the data from other groups and adds them to the chart
+         * e.g. add aggregated number of medical statements to the chart for therapy of tumor
+        */
+        if(options.aggregations){
+            options.aggregations.forEach((aggregation) => {
+                const aggregationCount = getAggregatedPopulation(responseStore, aggregation);
+                combinedSubGroupData.data.push(aggregationCount);
+                combinedSubGroupData.labels.push(aggregation);
+            });
+        }
+
         return {
             labels: combinedSubGroupData.labels,
             data: [
@@ -212,7 +270,8 @@
                             label: label + groupingLabel,
                             value: getAggregatedPopulationForStratumCode(
                                 responseStore,
-                                label
+                                label,
+                                responseGroupCode
                             ),
                         },
                     ];
@@ -238,7 +297,8 @@
 
                 superClassItem.value += getAggregatedPopulationForStratumCode(
                     responseStore,
-                    label
+                    label,
+                    responseGroupCode
                 );
 
                 return [
@@ -314,19 +374,25 @@
                  */
                 if (isNaN(parseInt(label))) return label;
 
-                return `${parseInt(label)} - ${parseInt(label) + groupRange}`;
+                return `${parseInt(label)} - ${
+                    parseInt(label) + groupRange - 1
+                }`;
             });
         }
 
-        chart.data.labels = chartLabels;
+        /**
+         * set the labels of the chart
+         * if a legend mapping is set, use the legend mapping
+         */
+        chart.data.labels = options.legendMapping ? chartLabels.map(label => {
+            return options.legendMapping[label]
+        }): chartLabels;
 
         chart.update();
     };
 
     $: {
-        if ($responseStore.size !== 0) {
-            setChartData($responseStore);
-        }
+        setChartData($responseStore);
     }
 
     onMount(() => {
@@ -342,10 +408,15 @@
         if (a !== "unknown" && b === "unknown") {
             return -1;
         }
-        // Convert values to numbers for numeric comparison
-        const numA = parseInt(a, 10);
-        const numB = parseInt(b, 10);
-        return numA - numB;
+        // Convert numeric values to numbers for comparison
+        if(!isNaN(a) && !isNaN(b)) {
+            a = parseInt(a, 10);
+            b = parseInt(b, 10);
+        }
+        
+        return a > b ? 1 : -1;
+
+
     };
 
     /**
@@ -376,12 +447,13 @@
                                  */
                                 values = [
                                     {
-                                        name: `${label} - ${
-                                            parseInt(label) + 9
-                                        }`,
+                                        name: `${label}`,
                                         value: {
                                             min: parseInt(label),
-                                            max: parseInt(label) + 9,
+                                            max:
+                                                parseInt(label) +
+                                                groupRange -
+                                                1,
                                         },
                                         queryBindId: uuidv4(),
                                     },
@@ -430,11 +502,14 @@
 
 <div part="chart-wrapper">
     <h4 part="chart-title">{title}</h4>
+    {#if options.hintText}
+        <InfoButtonComponent message={options.hintText} />
+    {/if}
     <canvas
         part="chart-canvas"
         bind:this={canvas}
         id="chart"
         on:click={handleClickOnStratifier}
     />
-    <div part="chart-hint">{hintText}</div>
+    <slot></slot>
 </div>

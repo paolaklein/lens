@@ -3,7 +3,9 @@ export type TreeNode = Category[] |Category | Criteria | AggregatedValue[] | Agg
 export type Category = {
     key: string;
     name: string;
-    childCategories?: Category[] 
+    childCategories?: Category[];
+    infoButtonText?: string[];
+    subCategoryName?: string;
 } | {
     key: string;
     name: string;
@@ -11,7 +13,8 @@ export type Category = {
     fieldType: 'single-select' | 'autocomplete' | 'number';
     type: 'EQUALS' | 'BETWEEN';
     criteria: | Criteria[];
-    
+    description?: string;
+    infoButtonText?: string[];
 }
 
 export type Criteria = {

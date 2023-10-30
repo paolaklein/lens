@@ -9,7 +9,7 @@
 
 <script lang="ts">
     import { buildAstFromQuery } from "../../helpers/ast-transformer";
-    import { queryStore } from "../../stores/query";
+    import { queryModified, queryStore } from "../../stores/query";
     import { measureStore } from "../../stores/measures";
     import {translateAstToCql} from "../../cql-translator-service/ast-to-cql-translator";
     import { buildLibrary, buildMeasure } from "../../helpers/cql-measure";
@@ -63,18 +63,17 @@
         if (controller) {
             controller.abort();
         }
+        responseStore.set(new Map());
 
         controller = new AbortController();
 
         const ast = buildAstFromQuery($queryStore);
         const cql = translateAstToCql(ast, false, backendMeasures);
-        console.log(cql);
 
         const library = buildLibrary(`${cql}`)
         const measure = buildMeasure(library.url, $measureStore.map( measureItem => measureItem.measure))
         const query = {lang: "cql", lib: library, measure: measure};
 
-        console.log(query);
 
 
         const backend = new Spot(
@@ -87,10 +86,9 @@
             controller
         )
 
+        queryModified.set(false);
+
     };
-
-    $: console.log($responseStore);
-
 
 </script>
 
