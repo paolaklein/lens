@@ -14,6 +14,14 @@
       mockCatalogueData = data;
     });
 
+  let libraryOptions = ""
+
+  fetch("optionsBBMRI.json")
+    .then((response) => response.json())
+    .then((data) => {
+      libraryOptions = data
+    });
+
   const measures = [
     diagnosisMeasureBbmriProd,
     patientsMeasureBbmriProd,
@@ -31,8 +39,6 @@
       labelTo: "to",
     },
   };
-
-  let catalogueopen = false;
 
   const resultSummaryConfig = [
     {
@@ -254,3 +260,4 @@
     <img src="../public/logo_ce-en-rvb-lr.jpg" alt="european commission logo" />
   </div>
 </footer>
+<lens-options options={libraryOptions} catalogueData={mockCatalogueData}/>
