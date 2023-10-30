@@ -28,7 +28,6 @@
     $: $catalogue = catalogueData;
     $: $cqlMappingStore = cqlMapping;
 
-    $: console.log($lensOptions);
     $: console.log($cqlMappingStore);
     
 

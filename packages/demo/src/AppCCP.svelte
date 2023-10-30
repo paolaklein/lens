@@ -11,18 +11,26 @@
 
   let mockCatalogueData = "";
   let libraryOptions = ""
+  let cqlMapping = ""
 
-  fetch("catalogues/catalogue-dktk.json")
+  fetch("ccp/catalogue-dktk.json")
     .then((response) => response.text())
     .then((data) => {
       mockCatalogueData = data;
     });
 
-  fetch("options.json")
+  fetch("ccp/options.json")
     .then((response) => response.json())
     .then((data) => {
       libraryOptions = data
     });
+
+  fetch("ccp/cqlMapping.json")
+    .then((response) => response.text())
+    .then((data) => {
+      cqlMapping = data
+    });
+  
 
   const measures = [
     dktkPatientsMeasure,
@@ -312,4 +320,4 @@
     >
   </div>
 </footer>
-<lens-options options={libraryOptions} catalogueData={mockCatalogueData}/>
+<lens-options options={libraryOptions} catalogueData={mockCatalogueData} {cqlMapping}/>

@@ -5,10 +5,11 @@
 
 
 import type { AstBottomLayerValue, AstElement, AstTopLayer } from "../types/ast";
-import { alias as aliasMap, cqltemplate, criterionMap } from "./cqlquery-mappings";
+// import { alias as aliasMap, cqltemplate, criterionMap } from "./cqlquery-mappings";
 import { getCriteria } from "../stores/catalogue";
 import type { Measure } from '../types/backend';
 import { measureStore } from '../stores/measures';
+import { cqlMappingStore } from "../stores/mappings";
 
 /**
  * Get all cql from the project specific measures from the store
@@ -23,10 +24,19 @@ measureStore.subscribe((measures: Measure[]) => {
 let codesystems: string[] = []
 let criteria: string[]
 
-
+let aliasMap, cqltemplate, criterionMap
 
 export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: boolean = true, backendMeasures: string): string => {
   criteria = getCriteria("diagnosis")
+
+  /**
+   * gets the mappings from the store
+   */
+  cqlMappingStore.subscribe((mappings) => {
+    aliasMap = mappings.alias
+    cqltemplate = mappings.cqltemplate
+    criterionMap = mappings.criterionMap
+  })
 
   /**
    * DISCUSS: why is this even an array?
@@ -99,10 +109,10 @@ const getSingleton = (criterion: AstBottomLayerValue): string => {
     criterion.key = criterion.value as string;
   }
 
-  const myCriterion = criterionMap.get(criterion.key)
+  const myCriterion = criterionMap[criterion.key]
 
   if (myCriterion) {
-    const myCQL = cqltemplate.get(myCriterion.type)
+    const myCQL = cqltemplate[myCriterion.type]
     if (myCQL) {
       switch (myCriterion.type) {
         case "gender":
@@ -206,11 +216,11 @@ const substituteRangeCQLExpression = (
     console.warn(`Throwing away a ${criterionPrefix}Range${criterionSuffix} criterion, as both dates are undefined!`)
     return
   } else if (input.min === 0) {
-    const lowerThanDateTemplate = cqltemplate.get(`${criterionPrefix}LowerThan${criterionSuffix}`)
+    const lowerThanDateTemplate = cqltemplate[`${criterionPrefix}LowerThan${criterionSuffix}`]
     if (lowerThanDateTemplate)
       return substituteCQLExpression(criterion.key, myCriterion.alias, lowerThanDateTemplate, "", input.min, input.max)
   } else if (input.max === 0) {
-    const greaterThanDateTemplate = cqltemplate.get(`${criterionPrefix}GreaterThan${criterionSuffix}`)
+    const greaterThanDateTemplate = cqltemplate[`${criterionPrefix}GreaterThan${criterionSuffix}`]
     if (greaterThanDateTemplate)
       return substituteCQLExpression(criterion.key, myCriterion.alias, greaterThanDateTemplate, "", input.min, input.max)
   } else {
@@ -229,12 +239,12 @@ const substituteCQLExpression = (key: string, alias: string[] | undefined, cql: 
   cqlString = cqlString.replace(new RegExp("{{K}}"), key)
   if (alias && alias[0]) {
     cqlString = cqlString.replace(new RegExp("{{A1}}", "g"), alias[0])
-    const systemExpression = "codesystem " + alias[0] + ": '" + aliasMap.get(alias[0]) + "'"
+    const systemExpression = "codesystem " + alias[0] + ": '" + aliasMap[alias[0]] + "'"
     if (!codesystems.includes(systemExpression)) { codesystems.push(systemExpression) }
   }
   if (alias && alias[1]) {
     cqlString = cqlString.replace(new RegExp("{{A2}}", "g"), alias[1])
-    const systemExpression = "codesystem " + alias[1] + ": '" + aliasMap.get(alias[1]) + "'"
+    const systemExpression = "codesystem " + alias[1] + ": '" + aliasMap[alias[1]] + "'"
     if (!codesystems.includes(systemExpression)) { codesystems.push(systemExpression) }
   }
   if (min || min === 0) {

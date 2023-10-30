@@ -6,4 +6,4 @@ export const siteToDefaultCollectionIdStore= writable<Map<string,string>>(new Ma
 
 export const catalogueKeyToResponseKeyMap = writable<Map<string,string>>(new Map());
 
-export const cqlMappingStore = writable<object>({});
+export const cqlMappingStore = writable<any>({});
