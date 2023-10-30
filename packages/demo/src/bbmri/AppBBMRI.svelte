@@ -6,20 +6,31 @@
   specimenMeasureBbmriProd
 } from "../measures";
 
-  let mockCatalogueData = "";
+  let catalogueData = "";
 
-  fetch("../catalogues/catalogue-bbmri.json")
+  fetch("bbmri/catalogue-bbmri.json")
     .then((response) => response.text())
     .then((data) => {
-      mockCatalogueData = data;
+      catalogueData = data;
     });
 
+    
+    let cqlMapping = ""
+    
+    fetch("bbmri/cqlMapping.json")
+      .then((response) => response.text())
+      .then((data) => {
+      cqlMapping = data
+      console.log(cqlMapping);
+    });
+    
   let libraryOptions = ""
 
-  fetch("optionsBBMRI.json")
+  fetch("bbmri/optionsBBMRI.json")
     .then((response) => response.json())
     .then((data) => {
       libraryOptions = data
+      console.log(libraryOptions);
     });
 
   const measures = [
@@ -162,7 +173,7 @@
   </div>
   <div class="search">
     <lens-search-bar-multiple
-      treeData={mockCatalogueData}
+      treeData={catalogueData}
       noMatchesFoundMessage={"No matches found"}
       measures={measures}
     >
@@ -183,7 +194,7 @@
         toggleIconUrl='right-arrow-svgrepo-com.svg'
         addIconUrl='long-right-arrow-svgrepo-com.svg'
         collapseButtonIconUrl='right-arrow-svgrepo-com.svg'
-        treeData={JSON.stringify(mockCatalogueData)}
+        treeData={JSON.stringify(catalogueData)}
         texts={catalogueText}
         toggle={{ collapsable: true, open: false }}
       />
@@ -260,4 +271,5 @@
     <img src="../public/logo_ce-en-rvb-lr.jpg" alt="european commission logo" />
   </div>
 </footer>
-<lens-options options={libraryOptions} catalogueData={mockCatalogueData}/>
+<lens-options options={libraryOptions} {catalogueData} {cqlMapping}/>
+<lens-state-display></lens-state-display>

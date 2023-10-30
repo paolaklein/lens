@@ -10,7 +10,7 @@
 </script>
 
 {#if $queryStore[0].length > 0}
-    {translateAstToCql(buildAstFromQuery($queryStore))}
+    <!-- {translateAstToCql(buildAstFromQuery($queryStore))} -->
 {/if}
 <hr />
 <pre>{@html JSON.stringify($queryStore, null, 2)}</pre>

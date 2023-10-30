@@ -74,7 +74,7 @@
         const measure = buildMeasure(library.url, $measureStore.map( measureItem => measureItem.measure))
         const query = {lang: "cql", lib: library, measure: measure};
 
-
+        console.log(cql);
 
         const backend = new Spot(
             new URL(backendConfig.url),

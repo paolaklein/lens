@@ -4,6 +4,7 @@
         props: {
             options: {type: 'Object'},
             catalogueData: { type: "Object" },
+            cqlMapping: { type: "Object"}
         },
     }}
 />
@@ -16,11 +17,20 @@
     import {lensOptions} from "../stores/options";
     import { catalogue } from "../stores/catalogue";
     import type { Criteria } from "../types/treeData";
+    import { cqlMappingStore } from "../stores/mappings";
+
 
     export let options: object = {};
     export let catalogueData: Criteria[] = [];
+    export let cqlMapping: object = {};
     
     $: $lensOptions = options;
     $: $catalogue = catalogueData;
+    $: $cqlMappingStore = cqlMapping;
+
+    $: console.log($lensOptions);
+    $: console.log($cqlMappingStore);
+    
+
 
 </script>
