@@ -19492,7 +19492,6 @@
     {
         "key": "biosamples",
         "name": "Bioproben",
-        "infoButtonText": ["Bioprobentypen der Patienten gemäß der ausgewählten Kriterien. Es werden auch Einträge angezeigt, die ggfs. außerhalb der Suchkriterien liegen."],
         "childCategories": [
             {
                 "key": "sample_kind",
@@ -19500,7 +19499,7 @@
                 "system": "",
                 "fieldType": "single-select",
                 "type": "EQUALS",
-                "infoButtonText": ["Materialtyp der Bioprobe"],
+                "infoButtonText": ["Materialtyp der Bioprobe. Ob die Probe explizit Tumorzellen enthält, muss individuell abgeklärt werden."],
                 "criteria": [
                     {
                         "key": "serum",
