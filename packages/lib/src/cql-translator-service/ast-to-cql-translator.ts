@@ -29,7 +29,7 @@ export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: bool
   criteria = getCriteria("diagnosis")
 
   /**
-   * gets the mappings from the store
+   * gets the mappings from the cqlMappingStore passed via options component
    */
   cqlMappingStore.subscribe((mappings) => {
     aliasMap = mappings.alias
@@ -37,11 +37,7 @@ export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: bool
     criterionMap = mappings.criterionMap
   })
 
-  /**
-   * DISCUSS: why is this even an array?
-   * in bbmri there is only concatted to the string
-   */
-
+  
   /**
    * TODO: make configurable
    */

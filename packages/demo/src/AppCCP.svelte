@@ -1,5 +1,6 @@
 <script lang="ts">
   import "../../lib";
+  import {translateAstToCql} from './ast-to-cql-translator-ccp' 
   import type { CatalogueText } from "../../lib/src/types/texts";
   import {
     dktkDiagnosisMeasure,
@@ -8,6 +9,23 @@
     dktkProceduresMeasure,
     dktkSpecimenMeasure,
   } from "./measures";
+
+
+  /**
+   * listens for the retrieveAst event and translates the ast to cql,
+   * then sends it back to the library to make the requests to the backend
+  */
+  document.addEventListener('retrieveAst', (event: CustomEvent) => {
+
+    const result = translateAstToCql(event.detail);
+
+    const responseEvent = new CustomEvent('sendCql', {
+      detail: result,
+    });
+
+    document.dispatchEvent(responseEvent);
+  });
+
 
   let mockCatalogueData = "";
   let libraryOptions = ""

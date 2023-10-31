@@ -1,41 +1,65 @@
-/**
- * TODO: Document this file.
- */
 
+export type AstElement = AstTopLayer | AstBottomLayerValue
 
+export type AstTopLayer = {
+  operand: 'AND' | 'OR',
+  children: AstElement[]
+}
 
-import type { AstBottomLayerValue, AstElement, AstTopLayer } from "../types/ast";
-import { alias as aliasMap, cqltemplate, criterionMap } from "./cqlquery-mappings";
-import { getCriteria } from "../stores/catalogue";
-import type { Measure } from '../types/backend';
-import { measureStore } from '../stores/measures';
+export type AstBottomLayerValue = {
+  key: string;
+  type: string;
+  system?: string;
+  value: string | boolean | Array<string> | {min: number, max: number} | {min: Date | undefined, max: Date | undefined}
+}
 
-/**
- * Get all cql from the project specific measures from the store
- */
-let measuresCql: string[] = []
+export type Criteria = {
+  key: string;
+  name: string;
+  description?: string;
+  aggregatedValue?: AggregatedValue[][]
+}
 
-measureStore.subscribe((measures: Measure[]) => {
-  measuresCql = measures.map(measure => measure.cql)
-})
+export type AggregatedValue = {
+  value: string;
+  name: string;
+  type: string;
+  system?: string;
+}
 
 
 let codesystems: string[] = []
-let criteria: string[]
+let aliasMap: any = {}
+let cqltemplate: any = {}
+let criterionMap: any = {}
+let criteria: Criteria[]
 
-
-
-export const translateAstToCql = (query: AstTopLayer, returnOnlySingeltons: boolean = true, backendMeasures: string): string => {
-  criteria = getCriteria("diagnosis")
-
-  /**
-   * DISCUSS: why is this even an array?
-   * in bbmri there is only concatted to the string
-   */
+export const translateAstToCql = (
+  params: 
+  {
+    query: AstTopLayer,
+    returnOnlySingeltons: boolean,
+    backendMeasures: string,
+    measuresCql: string[],
+    aliasMap: any,
+    cqltemplate: any,
+    criterionMap: any,
+    criteria: Criteria[]
+  }
+): string => {
 
   /**
    * TODO: make configurable
    */
+
+  aliasMap = params.aliasMap
+  cqltemplate = params.cqltemplate
+  criterionMap = params.criterionMap
+  criteria = params.criteria
+
+  const { query, returnOnlySingeltons, backendMeasures, measuresCql } = params
+
+
   codesystems = [
     // NOTE: We always need loinc, as the Deceased Stratifier is computed with it!!!
     "codesystem loinc: 'http://loinc.org'"

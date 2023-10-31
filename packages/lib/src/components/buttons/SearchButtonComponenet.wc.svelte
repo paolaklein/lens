@@ -11,12 +11,13 @@
     import { buildAstFromQuery } from "../../helpers/ast-transformer";
     import { queryModified, queryStore } from "../../stores/query";
     import { measureStore } from "../../stores/measures";
-    import {translateAstToCql} from "../../cql-translator-service/ast-to-cql-translator";
     import { buildLibrary, buildMeasure } from "../../helpers/cql-measure";
+    import { retrieveCql, setCqlRetrieveListener } from "../../helpers/cqlRetriever";
     import { Spot } from "../../classes/spot";
     import { catalogueKeyToResponseKeyMap, uiSiteMappingsStore } from "../../stores/mappings";
     import type { Measure, BackendConfig } from "../../types/backend";
     import { responseStore } from "../../stores/response";
+    import { cqlStore } from "../../stores/cqlStore";
 
     export let title: string = "Search";
     export let backendConfig: BackendConfig = {
@@ -55,6 +56,13 @@
     */
     $: measureStore.set(measures);
 
+
+    /**
+     * sets the event listener which writes the response from the project-specific cql query translator
+     * the response is written to the cqlStore
+    */
+    setCqlRetrieveListener();
+
     /**
      * triggers a request to the backend via the spot class
      */
@@ -68,13 +76,12 @@
         controller = new AbortController();
 
         const ast = buildAstFromQuery($queryStore);
-        const cql = translateAstToCql(ast, false, backendMeasures);
+        retrieveCql(ast, false, backendMeasures)
 
-        const library = buildLibrary(`${cql}`)
+        const library = buildLibrary(`${$cqlStore}`)
         const measure = buildMeasure(library.url, $measureStore.map( measureItem => measureItem.measure))
         const query = {lang: "cql", lib: library, measure: measure};
 
-        console.log(cql);
 
         const backend = new Spot(
             new URL(backendConfig.url),
