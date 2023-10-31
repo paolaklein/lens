@@ -21,7 +21,6 @@
       .then((response) => response.text())
       .then((data) => {
       cqlMapping = data
-      console.log(cqlMapping);
     });
     
   let libraryOptions = ""
@@ -30,7 +29,6 @@
     .then((response) => response.json())
     .then((data) => {
       libraryOptions = data
-      console.log(libraryOptions);
     });
 
   const measures = [
@@ -175,9 +173,8 @@
     <lens-search-bar-multiple
       treeData={catalogueData}
       noMatchesFoundMessage={"No matches found"}
-      measures={measures}
     >
-    <lens-info-button iconUrl='../info-circle-svgrepo-com.svg' noQueryMessage="Leere Suchanfrage: Sucht nach allen Ergebnissen." />
+    <lens-info-button noQueryMessage="Leere Suchanfrage: Sucht nach allen Ergebnissen." />
   <lens-search-button
     title="Search"
     {measures}
@@ -213,7 +210,7 @@
         <lens-chart
           title="Gender Distribution"
           backgroundColor={JSON.stringify(chartColors)}
-          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
+          backgroundHoverColor={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="gender"
           chartType="pie"
           displayLegends={true}
@@ -224,7 +221,7 @@
         <lens-chart
           title="Age Distribution"
           backgroundColor={JSON.stringify(chartColors)}
-          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
+          backgroundHoverColor={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="age_at_diagnosis"
           chartType="bar"
           clickToAddState={true}
@@ -235,7 +232,7 @@
         <lens-chart
           title="Specimens"
           backgroundColor={JSON.stringify(chartColors)}
-          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
+          backgroundHoverColor={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="sample_kind"
           chartType="bar"
           clickToAddState={true}
@@ -245,7 +242,7 @@
         <lens-chart
           title="Diagnosis"
           backgroundColor={JSON.stringify(chartColors)}
-          backgroundHoverColors={JSON.stringify(chartBackgroudnColors)}
+          backgroundHoverColor={JSON.stringify(chartBackgroudnColors)}
           catalogueGroupCode="diagnosis"
           chartType="bar"
           clickToAddState={true}

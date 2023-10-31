@@ -24,12 +24,9 @@
     export let catalogueData: Criteria[] = [];
     export let cqlMapping: object = {};
     
+    
     $: $lensOptions = options;
     $: $catalogue = catalogueData;
     $: $cqlMappingStore = cqlMapping;
-
-    $: console.log($cqlMappingStore);
-    
-
 
 </script>
