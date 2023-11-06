@@ -501,6 +501,7 @@ define function SampleType(specimen FHIR.Specimen):
        else 'Unknown'
    end
 define Specimen:
+  if InInitialPopulation then [Specimen] else {} as List<Specimen>
 `
 }
 

@@ -11,10 +11,10 @@ import { cqlMappingStore } from "../stores/mappings";
 /**
  * Get all cql from the project specific measures from the store
  */
-let measuresCql: string[] = []
+let measuresCql: Measure[] = []
 
 measureStore.subscribe((measures: Measure[]) => {
-  measuresCql = measures.map(measure => measure.cql)
+  measuresCql = measures
 })
 
 /**

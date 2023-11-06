@@ -57,6 +57,7 @@
     dktkProceduresMeasure,
     dktkMedicationStatementsMeasure,
   ];
+  console.log(measures);
 
   const backendMeasures = `DKTK_STRAT_DEF_IN_INITIAL_POPULATION`;
 

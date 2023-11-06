@@ -1,31 +1,37 @@
 
-export type AstElement = AstTopLayer | AstBottomLayerValue
+ type AstElement = AstTopLayer | AstBottomLayerValue
 
-export type AstTopLayer = {
+ type AstTopLayer = {
   operand: 'AND' | 'OR',
   children: AstElement[]
 }
 
-export type AstBottomLayerValue = {
+ type AstBottomLayerValue = {
   key: string;
   type: string;
   system?: string;
   value: string | boolean | Array<string> | {min: number, max: number} | {min: Date | undefined, max: Date | undefined}
 }
 
-export type Criteria = {
+ type Criteria = {
   key: string;
   name: string;
   description?: string;
   aggregatedValue?: AggregatedValue[][]
 }
 
-export type AggregatedValue = {
+ type AggregatedValue = {
   value: string;
   name: string;
   type: string;
   system?: string;
 }
+
+ type Measure = {
+  key: string;
+  measure: object;
+  cql: string;
+};
 
 
 let codesystems: string[] = []
@@ -40,7 +46,7 @@ export const translateAstToCql = (
     query: AstTopLayer,
     returnOnlySingeltons: boolean,
     backendMeasures: string,
-    measuresCql: string[],
+    measuresCql: Measure[],
     aliasMap: any,
     cqltemplate: any,
     criterionMap: any,
@@ -82,10 +88,12 @@ export const translateAstToCql = (
     return singletons
   }
 
+  console.log(measuresCql);
+
   return cqlHeader +
     getCodesystems() +
     "context Patient\n" +
-    measuresCql.join('') +
+    measuresCql.map((measure: Measure) => measure.cql).join('') +
     singletons
 }
 

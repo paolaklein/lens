@@ -78,6 +78,8 @@
         const ast = buildAstFromQuery($queryStore);
         retrieveCql(ast, false, backendMeasures)
 
+        console.log($cqlStore);
+
         const library = buildLibrary(`${$cqlStore}`)
         const measure = buildMeasure(library.url, $measureStore.map( measureItem => measureItem.measure))
         const query = {lang: "cql", lib: library, measure: measure};
@@ -96,6 +98,8 @@
         queryModified.set(false);
 
     };
+
+    $: console.log($responseStore)
 
 </script>
 
