@@ -21,10 +21,10 @@
         },
         "gender": {
             "legendMapping": {
-                "male": "Männlich",
-                "female": "Weiblich",
-                "unknown": "Unbekannt",
-                "other": "Divers"
+                "male": "männlich",
+                "female": "weiblich",
+                "unknown": "unbekannt",
+                "other": "divers, intersexuell"
             }
         },
         "diagnosis": {
