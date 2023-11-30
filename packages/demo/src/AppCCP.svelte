@@ -55,6 +55,10 @@
       key: "patients",
       title: "Patienten",
     },
+    {
+      key: "patients",
+      title: "FFEP-Gewebeproben",
+    },
   ];
 
   const catalogueKeyToResponseKeyMap = [
@@ -229,6 +233,15 @@
             * Es sind in der Regel auch FFPE-Gewebeproben verfügbar
           </div>
         </lens-result-table>
+      </div>
+      <div class="chart-wrapper">
+        <lens-chart
+          title="FFPE-Gewebeproben pro Standort"
+          catalogueGroupCode="patients"
+          perSite={true}
+          displayLegends={true}
+          chartType="pie"
+        />
       </div>
       <div class="chart-wrapper">
         <lens-chart

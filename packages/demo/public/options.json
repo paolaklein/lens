@@ -116,6 +116,10 @@
             {
                 "title": "Bioproben*",
                 "dataKey": "specimen"
+            },
+            {
+                "title": "FFPE-Proben",
+                "dataKey": "patients"
             }
         ]
     }

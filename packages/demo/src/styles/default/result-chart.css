@@ -1,5 +1,5 @@
 
-lens-chart {
+lens-chart, lens-chart-mockup{
     background-color: var(--white);
     display: grid;
   }
@@ -51,7 +51,7 @@ lens-chart::part(info-button-dialogue) {
 
 
 
-lens-chart::part(chart-canvas) {
+lens-chart::part(chart-canvas), lens-chart-mockup::part(chart-canvas) {
   width: 100%;
   max-height: 400px;
 }
