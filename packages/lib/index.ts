@@ -11,3 +11,4 @@ export { default as NegotiateButtonComponent } from './src/components/buttons/Ne
 export { default as InfoButton } from './src/components/buttons/InfoButtonComponent.wc.svelte'
 export { default as lensOptions } from './src/components/Options.wc.svelte'
 export { default as ModifiedSearchComponent } from './src/components/informational/ModifiedSearchComponent.wc.svelte'
+export { default as QueryDownloadButtonComponent } from './src/components/buttons/DownloadQueryButton.wc.svelte'

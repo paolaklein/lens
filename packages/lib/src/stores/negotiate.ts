@@ -4,7 +4,6 @@ import type { QueryItem } from "../types/queryData";
 import { buildAstFromQuery } from "../helpers/ast-transformer";
 import type { AstElement, AstTopLayer } from "../types/ast";
 import { lensOptions } from "./options";
-import { responseStore } from "./response";
 import { v4 as uuidv4 } from 'uuid';
 import type { Collection } from "../types/collection";
 import type { SendableQuery } from "../types/queryData";

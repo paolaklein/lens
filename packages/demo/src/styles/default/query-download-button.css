@@ -1,0 +1,21 @@
+lens-query-download-button::part(button) {
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius-small);
+    padding: var(--gap-xs) var(--gap-s);
+    font-size: var(--font-size-m);
+    cursor: pointer;
+    display: inline-flex;
+    gap: var(--gap-xs);
+    align-items: center;
+    background-color: var(--blue);
+}
+
+lens-query-download-button::part(checkmark) {
+    color: var(--green);
+}
+
+
+lens-query-download-button::part(button):hover {
+    background-color: var(--light-blue);
+}

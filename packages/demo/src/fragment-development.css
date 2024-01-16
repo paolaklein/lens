@@ -4,6 +4,8 @@
 @import url('./styles/default/results-overview.css');
 @import url('./styles/default/result-table.css');
 @import url('./styles/default/result-chart.css');
+@import url('./styles/default/query-download-button.css');
+@import url('./styles/default/negotiate-button.css');
 
 
 :root {

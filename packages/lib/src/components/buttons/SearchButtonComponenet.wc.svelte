@@ -75,6 +75,7 @@
         const query = {lang: "cql", lib: library, measure: measure};
 
         const queryString = btoa(decodeURI(JSON.stringify(query)));
+        console.log(queryString);
         
         /**
          * also used as data for negotiator / project manager

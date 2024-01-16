@@ -20,6 +20,7 @@ const queryParam: string = urlParams.get("query");
 
 if (queryParam !== null) {
     const queryParamDecoded: QueryItem[][] = JSON.parse(atob(queryParam));
+    console.log(queryParamDecoded);
     queryStore.set(queryParamDecoded);
 }
 

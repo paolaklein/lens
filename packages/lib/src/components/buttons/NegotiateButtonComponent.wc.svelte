@@ -12,11 +12,6 @@
     export let title: string = "Negotiate with biobanks";
     let disabled: boolean = false;
 
-    /**
-     * TODO: implement negotiator connection
-    */
-
-
 </script>
 <button
     part={`lens-negotiate-button lens-negotiate-button-${

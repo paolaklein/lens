@@ -167,6 +167,11 @@
   />
   </div>
 
+  <h2>Query Download Button</h2>
+  <div class="componentBox">
+    <lens-query-download-button/>
+  </div>
+
   <h2>Negotiator Button</h2>
   <div class="componentBox">
     <lens-negotiator-button />
