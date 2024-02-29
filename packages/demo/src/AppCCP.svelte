@@ -136,7 +136,7 @@
 </header>
 <main>
     <div class="search">
-        <lens-search-bar
+        <lens-search-bar-multiple
             treeData={mockCatalogueData}
             noMatchesFoundMessage={"keine Ergebnisse gefunden"}
         />
