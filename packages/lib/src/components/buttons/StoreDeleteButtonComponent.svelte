@@ -4,8 +4,8 @@
         removeItemFromQuery,
         removeValueFromQuery,
     } from "../../stores/query";
-    import type { QueryItem } from "../../types/queryData";
-    export let itemToDelete: { type: string; index: number; item?: QueryItem };
+    import type { QueryItem, QueryStore } from "../../types/queryData";
+    export let itemToDelete: { type: string; index: number; item: QueryItem };
 
     const { type, index, item } = itemToDelete;
 
@@ -15,12 +15,12 @@
      */
     const deleteItem = (): void => {
         if (type === "group") {
-            queryStore.update((query) => {
-                query = query.filter((group, i) => i !== index);
-                if (query.length === 0) {
-                    query = [[]];
+            queryStore.update((store: QueryStore) => {
+                store.include = store.include.filter((group, i) => i !== index);
+                if (store.include.length === 0) {
+                    store.include = [[]];
                 }
-                return query;
+                return store;
             });
         }
         if (type === "item") {

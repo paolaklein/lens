@@ -10,17 +10,15 @@
 />
 
 <script lang="ts">
-    import type { Category } from "../../types/treeData";
     import { queryStore } from "../../stores/query";
     import SearchBarComponent from "./SearchBarComponent.wc.svelte";
-    import type { QueryItem } from "../../types/queryData";
+    import type { QueryStore } from "../../types/queryData";
 
     /**
      * props
      * @param treeData takes a Category tree to build the autocomplete items from
      * @param noMatchesFoundMessage takes a string to display when no matches are found
      */
-    export let treeData: Category[] = [];
     export let noMatchesFoundMessage: string = "No matches found";
     export let placeholderText: string = "Type to filter conditions";
 
@@ -28,8 +26,8 @@
      * Adds a new search bar to the query store
      */
     const addSearchBar = (): void => {
-        queryStore.update((queryStore: QueryItem[][]): QueryItem[][] => {
-            queryStore.push([]);
+        queryStore.update((queryStore: QueryStore): QueryStore => {
+            queryStore.include.push([]);
             return queryStore;
         });
     };
@@ -37,15 +35,14 @@
 
 <div part="lens-searchbar-multiple">
     <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-    {#each $queryStore as _, index}
+    {#each $queryStore.include as _, index}
         <div part="search-bar-wrapper">
             <SearchBarComponent
-                {treeData}
                 {noMatchesFoundMessage}
                 {placeholderText}
                 {index}
             />
-            {#if index === $queryStore.length - 1}
+            {#if index === $queryStore.include.length - 1}
                 <button part="lens-searchbar-add-button" on:click={addSearchBar}
                     >+</button
                 >

@@ -59,6 +59,12 @@
         // ["encounter", "Encounter"],
     ];
 
+    // VITE_TARGET_ENVIRONMENT should be set by the ci pipeline
+    const backendUrl =
+        import.meta.env.VITE_TARGET_ENVIRONMENT === "production"
+            ? "https://backend.data.dktk.dkfz.de/prod/"
+            : "https://backend.demo.lens.samply.de/prod/";
+
     const uiSiteMap: string[][] = [
         ["berlin", "Berlin"],
         ["berlin-test", "Berlin"],
@@ -103,20 +109,21 @@
     //   ];
 
     const backendConfig = {
-        url: "http://localhost:8080",
+        url: import.meta.env.PROD ? backendUrl : "http://localhost:8080",
         backends: [
             "mannheim",
             "freiburg",
             "muenchen-tum",
             "hamburg",
             "frankfurt",
-            "berlin",
+            "berlin-test",
             "dresden",
             "mainz",
             "muenchen-lmu",
             "essen",
             "ulm",
             "wuerzburg",
+            "hannover",
         ],
         uiSiteMap: uiSiteMap,
         catalogueKeyToResponseKeyMap: catalogueKeyToResponseKeyMap,
@@ -152,43 +159,22 @@
 </script>
 
 <main>
-    <h2>Data Passer</h2>
-    <div class="componentBox">
-        <lens-data-passer bind:this={dataPasser} />
-        <button on:click={() => getQuery()}>Get Query Store</button>
-        <button on:click={() => getResponse()}>Get Response Store</button>
-        <button on:click={() => getAST()}>Get AST</button>
-        {#each queryStore as queryStoreGroup}
-            <div>
-                {#each queryStoreGroup as queryStoreItem}
-                    <div>
-                        <button on:click={() => removeItem(queryStoreItem)}>
-                            remove {queryStoreItem.name}:
-                        </button>
-                        <ul>
-                            {#each queryStoreItem.values as queryStoreValue}
-                                <li>
-                                    <button
-                                        on:click={() =>
-                                            removeValue(
-                                                queryStoreItem,
-                                                queryStoreValue,
-                                            )}
-                                    >
-                                        remove {queryStoreValue.name}
-                                    </button>
-                                </li>
-                            {/each}
-                        </ul>
-                    </div>
-                {/each}
-            </div>
-        {/each}
-    </div>
-
-    <h2>Search bars</h2>
+    <h2>Inclusion Search bars</h2>
     <div class="componentBox">
         <lens-search-bar-multiple noMatchesFoundMessage={"No matches found"} />
+    </div>
+
+    <h2>Exclusion searchbar</h2>
+    <div class="componentBox">
+        <lens-search-bar
+            noMatchesFoundMessage={"No matches found"}
+            exclude={true}
+        />
+    </div>
+
+    <h2>State display</h2>
+    <div class="componentBox">
+        <lens-state-display />
     </div>
 
     <h2>Search Button</h2>
@@ -235,10 +221,38 @@
             toggle={{ collapsable: true, open: catalogueopen }}
         />
     </div>
-
-    <h2>State display</h2>
+    <h2>Data Passer</h2>
     <div class="componentBox">
-        <lens-state-display />
+        <lens-data-passer bind:this={dataPasser} />
+        <button on:click={() => getQuery()}>Get Query Store</button>
+        <button on:click={() => getResponse()}>Get Response Store</button>
+        <button on:click={() => getAST()}>Get AST</button>
+        {#each queryStore as queryStoreGroup}
+            <div>
+                {#each queryStoreGroup as queryStoreItem}
+                    <div>
+                        <button on:click={() => removeItem(queryStoreItem)}>
+                            remove {queryStoreItem.name}:
+                        </button>
+                        <ul>
+                            {#each queryStoreItem.values as queryStoreValue}
+                                <li>
+                                    <button
+                                        on:click={() =>
+                                            removeValue(
+                                                queryStoreItem,
+                                                queryStoreValue,
+                                            )}
+                                    >
+                                        remove {queryStoreValue.name}
+                                    </button>
+                                </li>
+                            {/each}
+                        </ul>
+                    </div>
+                {/each}
+            </div>
+        {/each}
     </div>
 </main>
 

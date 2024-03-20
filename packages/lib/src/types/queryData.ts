@@ -1,10 +1,15 @@
 import type { AggregatedValue } from "./treeData";
 
+export type QueryStore = {
+    include: QueryItem[][];
+    exclude: QueryItem[];
+};
+
 export type QueryItem = {
     id: string;
     key: string;
     name: string;
-    type: string;
+    type?: string;
     system?: string;
     values: QueryValue[];
     description?: string;

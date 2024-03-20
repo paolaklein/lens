@@ -2,12 +2,12 @@
  * Handles the state of the query
  * Consists of multiple arrays which will have an 'or' logic between them later when the query is sent to the server
  */
-import type { QueryItem, QueryValue } from "../types/queryData";
+import type { QueryItem, QueryStore, QueryValue } from "../types/queryData";
 import { writable } from "svelte/store";
 import { v4 as uuidv4 } from "uuid";
 import type { Category, Criteria } from "../types/treeData";
 
-export const queryStore = writable<QueryItem[][]>([[]]);
+export const queryStore = writable<QueryStore>({ include: [[]], exclude: [] });
 
 export const activeQueryGroupIndex = writable(0);
 
@@ -21,12 +21,16 @@ export const queryModified = writable(false);
  * if the group index is negative, the item will be added to the first group
  * @param queryObject - the object to be added to the store
  * @param queryGroupIndex - the index of the group (searchbar) where the object should be added
+ * @param exclude - if the object should be added to the exclude group
  */
 export const addItemToQuery = (
     queryObject: QueryItem,
     queryGroupIndex: number,
+    exclude = true,
 ): void => {
     queryModified.set(true);
+
+    console.log(queryObject, queryGroupIndex, exclude);
 
     /**
      * prevent mutation of the original object
@@ -34,25 +38,27 @@ export const addItemToQuery = (
      * (e.g. when numbers are changed)
      */
     queryObject = Object.assign({}, queryObject);
-    queryStore.update((query) => {
+    queryStore.update((query: QueryStore) => {
         /**
          * handles the case when the group index is negative or too high
          */
         if (queryGroupIndex < 0) queryGroupIndex = 0;
 
-        if (queryGroupIndex > query.length) {
-            queryGroupIndex = query.length;
+        if (queryGroupIndex > query.include.length) {
+            queryGroupIndex = query.include.length;
         }
 
-        if (queryGroupIndex === query.length) {
-            query = [...query, []];
+        if (queryGroupIndex === query.include.length) {
+            query.include = [...query.include, []];
         }
 
         /**
          * finds objects with the same name in the query
          */
 
-        let queryStoreGroup: QueryItem[] = query[queryGroupIndex];
+        let queryStoreGroup: QueryItem[] = exclude
+            ? query.exclude
+            : query.include[queryGroupIndex];
 
         const duplicateObjects: QueryItem[] = findObjectsWithSameName(
             queryStoreGroup.concat(queryObject),
@@ -95,7 +101,12 @@ export const addItemToQuery = (
         );
         queryStoreGroup.push(queryObject);
 
-        query[queryGroupIndex] = queryStoreGroup;
+        if (exclude) {
+            query.exclude = queryStoreGroup;
+        } else {
+            query.include[queryGroupIndex] = queryStoreGroup;
+        }
+
         return query;
     });
 };
@@ -217,12 +228,12 @@ export const addStratifier = ({
     catalogueGroupCode,
     queryGroupIndex = 0,
     groupRange,
-}): void => {
+}: AddStratifierParams): void => {
     let queryItem: QueryItem;
     console.log(catalogue);
     catalogue.forEach((parentCategory: Category) => {
         if ("childCategories" in parentCategory) {
-            parentCategory.childCategories.forEach(
+            parentCategory.childCategories?.forEach(
                 (childCategorie: Category) => {
                     if (
                         childCategorie.key === catalogueGroupCode &&

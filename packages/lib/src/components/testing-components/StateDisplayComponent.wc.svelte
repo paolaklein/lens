@@ -9,13 +9,16 @@
     getCriteria("diagnosis");
 </script>
 
-{#if $queryStore[0].length > 0}
-    {translateAstToCql(buildAstFromQuery($queryStore))}
+{#if $queryStore.include[0].length > 0}
+    {translateAstToCql(buildAstFromQuery($queryStore.include), false, "")}
 {/if}
 <hr />
 <pre>{@html JSON.stringify($queryStore, null, 2)}</pre>
 <hr />
-{#if $queryStore[0].length > 0}
-    <pre>{@html JSON.stringify(buildAstFromQuery($queryStore), null, 2)}</pre>
+{#if $queryStore.include[0].length > 0}
+    <pre>{@html JSON.stringify(
+            buildAstFromQuery($queryStore.include),
+            null,
+            2,
+        )}</pre>
 {/if}
-

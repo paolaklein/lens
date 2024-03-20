@@ -23,23 +23,12 @@
     import { addPercentageSignToCriteria } from "../../helpers/object-formaters";
     import { catalogue } from "../../stores/catalogue";
 
-    /**
-     * props
-     * @param treeData takes a Category tree to build the autocomplete items from
-     * @param noMatchesFoundMessage takes a string to display when no matches are found
-     */
-    export let treeData: Category[] = [];
     export let noMatchesFoundMessage: string = "No matches found";
     export let placeholderText: string = "Type to filter conditions";
     export let index: number = 0;
+    export let exclude: boolean = false;
 
-    $: queryGroup = $queryStore[index];
-
-    /**
-     * Initialize the catalogue store with the given tree data
-     * watch for changes from other components
-     */
-    $: $catalogue = treeData;
+    $: queryGroup = exclude ? $queryStore.exclude : $queryStore.include[index];
 
     /**
      * handles the focus state of the input element
@@ -173,23 +162,19 @@
      */
     const addInputValueToStore = (
         inputItem: AutoCompleteItem,
-        indexOfChosenStore: number = $queryStore.length,
+        indexOfChosenStore: number = exclude ? 0 : $queryStore.include.length,
     ): void => {
-        /**
-         * transform inputItem to QueryItem
-         */
         const queryItem: QueryItem = {
             id: uuidv4(),
             name: inputItem.name,
             key: inputItem.key,
-            type: "type" in inputItem && inputItem.type,
-            system: "system" in inputItem && inputItem.system,
+            type: inputItem.type || undefined,
+            system: inputItem.system || undefined,
             values: [
                 {
                     value:
-                        "aggregatedValue" in inputItem.criterion
-                            ? inputItem.criterion.aggregatedValue
-                            : inputItem.criterion.key,
+                        inputItem.criterion.aggregatedValue ||
+                        inputItem.criterion.key,
                     name: inputItem.criterion.name,
                     description: inputItem.criterion.description,
                     queryBindId: uuidv4(),
@@ -197,7 +182,7 @@
             ],
         };
 
-        addItemToQuery(queryItem, indexOfChosenStore);
+        addItemToQuery(queryItem, indexOfChosenStore, exclude);
 
         inputValue = "";
         focusedItemIndex = 0;
@@ -326,8 +311,8 @@
                                 <InfoButtonComponent
                                     showQuery={true}
                                     onlyChildInfo={true}
-                                    queryItem={{ 
-                                        ...queryItem, 
+                                    queryItem={{
+                                        ...queryItem,
                                         values: [value],
                                     }}
                                 />
