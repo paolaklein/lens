@@ -36,6 +36,8 @@ services:
       - OAUTH2_PROXY_UPSTREAMS=static://202
       - OAUTH2_PROXY_EMAIL_DOMAINS=*
       - OAUTH2_PROXY_ALLOWED_GROUPS=${ALLOWED_GROUPS}
+      - OAUTH2_PROXY_PASS_AUTHORIZATION_HEADER=true
+      - OAUTH2_PROXY_PASS_USER_HEADERS=true
       # For some reason, login.verbis.dkfz.de does not have a "groups" scope but this comes automatically through a
       # scope called microprofile-jwt. Remove the following line once we have a "groups" scope.
       - OAUTH2_PROXY_SCOPE=openid profile email
@@ -57,7 +59,9 @@ services:
       - "traefik.http.routers.lens.middlewares=traefik-forward-auth"
 
   spot:
-    image: samply/rustyspot:main
+    image: traefik/whoami
+    volumes:
+      - ./target/log.txt:/log.txt
     environment:
       BEAM_SECRET: "${LOCAL_BEAM_SECRET}"
       BEAM_PROXY_URL: http://beam-proxy:8081
@@ -73,7 +77,7 @@ services:
       - "traefik.http.middlewares.corsheaders.headers.accesscontrolalloworiginlist=https://${GUI_HOST}"
       - "traefik.http.middlewares.corsheaders.headers.accesscontrolallowcredentials=true"
       - "traefik.http.middlewares.corsheaders.headers.accesscontrolmaxage=-1"
-      - "traefik.http.routers.spot.rule=Host(`backend.${GUI_HOST}`) && PathPrefix(`/prod`)"
+      - "traefik.http.routers.spot.rule=Host(`${GUI_HOST}`) && PathPrefix(`/prod`)"
       - "traefik.http.middlewares.stripprefix_spot_prod.stripprefix.prefixes=/prod"
       - "traefik.http.routers.spot.tls=true"
       - "traefik.http.routers.spot.middlewares=corsheaders,traefik-forward-auth,stripprefix_spot_prod"
