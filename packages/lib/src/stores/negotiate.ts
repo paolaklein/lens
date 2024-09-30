@@ -239,12 +239,10 @@ export const negotiate = async (sitesToNegotiate: string[]): Promise<void> => {
         return;
     }
 
-    const subpage = "/project-view";
     const negotiationURI =
         negotiatorResponse.redirect_uri
             .toString()
             .slice(0, indexOfQuestionMark) +
-        `${subpage}` +
         negotiatorResponse.redirect_uri.toString().slice(indexOfQuestionMark);
 
     window.location.href = negotiationURI;
