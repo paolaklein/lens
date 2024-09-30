@@ -340,6 +340,7 @@ async function sendRequestToProjectManager(
     const negotiateUrl = projectCode
         ? negotiateOptions.editProjectUrl
         : negotiateOptions.newProjectUrl;
+    humanReadable = humanReadable ? btoa(humanReadable): "";
 
     let response!: Response & { redirect_uri: string };
 
