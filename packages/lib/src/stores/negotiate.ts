@@ -328,7 +328,8 @@ async function sendRequestToProjectManager(
     const negotiationPartners = collections
         .map((collection) => collection.collectionId.toLocaleLowerCase())
         .join(",");
-    const returnURL: string = `${window.location.protocol}//${window.location.host}/?collections=${negotiationPartners}${queryParam}`;
+    const returnURL: string = `${window.location.protocol}//${window.location.host}${window.location.host.endsWith('/') ? '' : '/'}?collections=${negotiationPartners}${queryParam}`;
+
     const urlParams: URLSearchParams = new URLSearchParams(
         window.location.search,
     );
