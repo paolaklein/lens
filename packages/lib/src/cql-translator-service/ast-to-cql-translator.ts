@@ -45,6 +45,31 @@ export const translateAstToCql = (
     singletons = backendMeasures;
     singletons += resolveOperation(query);
 
+    // console.log(query)
+
+    /*     let additionalCriteria
+     */
+
+    // query.children.forEach((criterion: Operation | Condition) => {
+    //     additionalCriteria += this.getRetrievalCriterion(criterion);
+    //   });
+
+    //   if (
+    //     additionalCriteria == '' ||
+    //     additionalCriteria.substring(additionalCriteria.length - 1) == '('
+    //   ) {
+    //     retrievalCriteria += '[Specimen]';
+    //   } else if (
+    //     additionalCriteria.substring(additionalCriteria.length - 9) == 'intersect'
+    //   ) {
+    //     retrievalCriteria += '[Specimen] S where ' + additionalCriteria;
+    //     retrievalCriteria = retrievalCriteria.slice(0, -10);
+    //   } else {
+    //     retrievalCriteria += '[Specimen] S where ' + additionalCriteria;
+    //     //retrievalCriteria += additionalCriteria
+    //     retrievalCriteria = retrievalCriteria.slice(0, -5);
+    //   }
+
     if (query.children.length == 0) {
         singletons += "\ntrue";
     }
@@ -61,7 +86,151 @@ export const translateAstToCql = (
         singletons
     );
 };
+/* 
 
+const getRetrievalCriterion = (criterion: AstElement): string => {
+    let expression: string = '';
+    let myCQL: string = '';
+    if (criterion instanceof AstBottomLayerValue) {
+      const myCriterion = this.criterionMap.get(criterion.key);
+      if (myCriterion) {
+        switch (myCriterion.type) {
+          case 'specimen': {
+            expression += '(';
+            myCQL += this.cqltemplate.get('retrieveSpecimenByType');
+            if (typeof criterion.value === 'string') {
+              if (criterion.value.slice(-1) === '%') {
+                const mykey = criterion.value.slice(0, -2);
+                if (this.criteria.values != undefined) {
+                  criterion.value = this.criteria.values
+                    .filter((value) => value.key.indexOf(mykey) != -1)
+                    .map((value) => value.key);
+                  this.getRetrievalCriterion(criterion);
+                }
+              } else {
+                expression +=
+                  this.substituteCQLExpression(
+                    criterion.key,
+                    myCriterion.alias,
+                    myCQL,
+                    criterion.value as string
+                  ) + ') and\n';
+              }
+            }
+            if (criterion.value instanceof Array<string>) {
+              var values: string[] = [];
+              criterion.value.forEach((element) => {
+                values.push(element);
+              });
+
+              if (criterion.value.includes('blood-plasma')) {
+                values.push(
+                  'plasma-edta',
+                  'plasma-citrat',
+                  'plasma-heparin',
+                  'plasma-cell-free',
+                  'plasma-other',
+                  'plasma'
+                );
+              }
+              if (criterion.value.includes('blood-serum')) {
+                values.push('serum');
+              }
+              if (criterion.value.includes('tissue-ffpe')) {
+                values.push(
+                  'tumor-tissue-ffpe',
+                  'normal-tissue-ffpe',
+                  'other-tissue-ffpe',
+                  'tissue-formalin'
+                );
+              }
+              if (criterion.value.includes('tissue-frozen')) {
+                values.push(
+                  'tumor-tissue-frozen',
+                  'normal-tissue-frozen',
+                  'other-tissue-frozen'
+                );
+              }
+              if (criterion.value.includes('dna')) {
+                values.push('cf-dna', 'g-dna');
+              }
+              if (criterion.value.includes('tissue-other')) {
+                values.push('tissue-paxgene-or-else', 'tissue');
+              }
+              if (criterion.value.includes('derivative-other')) {
+                values.push('derivative');
+              }
+              if (criterion.value.includes('liquid-other')) {
+                values.push('liquid');
+              }
+
+              if (values.length === 1) {
+                expression +=
+                  this.substituteCQLExpression(
+                    criterion.key,
+                    myCriterion.alias,
+                    myCQL,
+                    values[0]
+                  ) + ') and\n';
+              } else {
+                values.forEach((value: string) => {
+                  expression +=
+                    '(' +
+                    this.substituteCQLExpression(
+                      criterion.key,
+                      myCriterion.alias,
+                      myCQL,
+                      value
+                    ) +
+                    ') or\n';
+                });
+                expression = expression.slice(0, -4) + ') and\n';
+              }
+            }
+            break;
+          }
+          case 'samplingDate': {
+            expression += '(';
+            myCQL += this.cqltemplate.get('retrieveSpecimenBySamplingDate');
+
+            let newCQL: string = '';
+            if (
+              typeof criterion.value == 'object' &&
+              !(criterion.value instanceof Array) &&
+              (criterion.value.min instanceof Date ||
+                criterion.value.max instanceof Date)
+            ) {
+              if (!(criterion.value.min instanceof Date)) {
+                newCQL = myCQL.replace(
+                  'between {{D1}} and {{D2}}',
+                  '<= {{D2}}'
+                );
+              } else if (!(criterion.value.max instanceof Date)) {
+                newCQL = myCQL.replace(
+                  'between {{D1}} and {{D2}}',
+                  '>= {{D1}}'
+                );
+              } else {
+                newCQL = myCQL;
+              }
+              expression +=
+                this.substituteCQLExpressionDate(
+                  criterion.key,
+                  myCriterion.alias,
+                  newCQL,
+                  '',
+                  criterion.value.min as Date,
+                  criterion.value.max as Date
+                ) + ') and\n';
+            }
+            break;
+          }
+        }
+      }
+    }
+    return expression;
+  }
+ */
 const resolveOperation = (operation: AstElement): string => {
     let expression: string = "";
 
