@@ -145,3 +145,14 @@ footer a {
     margin: 0 auto;
 }
     
+p{
+    text-align: left;
+    width: 60%;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}

@@ -14,12 +14,12 @@ const data: Project[] = [
     {
         "name": "Testprojekt",
         "title": "Resection of metastsis in patients with RAS-mutated CRC",
-        "description": "This is a test project to demonstrate the functionality of the CCP Explorer.",
-        "cites": "",
-        "category": "Clinical",
-        "oncology": "Colorectal",
-        "status": "Active",
-        "project_time": "2021-2023",
+        "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+        "cites": "Berlin, Dresden, Freiburg, Tübingen",
+        "category": "Bildgebungsdaten, Bioprobendaten, klinische Daten ",
+        "oncology": "Darmkrebs",
+        "status": "aktiv",
+        "project_time": "01/2022 - 01/2025 (geplant)",
     }
 ];
 
@@ -42,19 +42,21 @@ const data: Project[] = [
 <main>
     <div class= "content">
     <img class="header" src="../header.png" alt="Header" />
+    <h1 style="color:gray;margin-bottom:0;">Testinstanz</h1>
     <h1>CCP Projektübersicht</h1>
     <h2>Verknüpfung von Forschungsdaten mit der CCP-Infrastruktur</h2>
-    <p>lorem ipsum text or whatever</p>
-    <div>
+    <p>Um Patienten im CCP Explorer identifizieren zu können, die in ein Forschungsprojekt eingeschlossen wurden, werden diese mit einem projekt-spezifisches Patienten-Pseudonym (PSP-ID) gekennzeichnet. In der folgenden Übersicht werden zu diesen im CCP Explorer aufgeführten Forschungsprojekten jeweils eine Kurzzusammenfassung sowie ausgewählte Metainformationen aufgeführt. Die dargestellten Informationen, etwa zu den Kategorien erhobener Daten, erlauben eine erste Einschätzung, ob vorhandene Daten aus diesem Projekt für ein geplantes Forschungsvorhaben relevant sein könnten. Die Forschungsdaten liegen in den jeweiligen Projekt-Datenbanken vor und können auf Anfrage durch die Projektleitung weitergeben werden. Wenn Sie an Forschungsdaten von einem der aufgeführten Projekte interessiert sind, wenden Sie sich bitte an die zentrale CCP-Koordination (ccp@dkfz.de). </p>
+    <div class="list">
     {#each data as project}
         <div class="project">
             <h3>{project.name}</h3>
             <p><b>Titel:</b> {project.title}<br>
-           <b>Beschreibung:</b> {project.description}<br>
-            <b>Kategorie:</b> {project.category}<br>
-            <b>Onkologie:</b> {project.oncology}<br>
+           <b>Projekt-Beschreibung:</b> {project.description}<br>
+           <b>Standorte mit Patientenrekrutierung:</b> {project.cites}<br>
+            <b>Kategorie der erhobenen Daten:</b> {project.category}<br>
+            <b>Onkologische Entität:</b> {project.oncology}<br>
             <b>Status:</b> {project.status}<br>
-            <b>Projektzeit:</b> {project.project_time}<br></p>
+            <b>Projektlaufzeit:</b> {project.project_time}<br></p>
         </div>
     {/each}
 </div>
