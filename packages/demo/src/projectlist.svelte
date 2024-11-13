@@ -23,7 +23,7 @@ const data: Project[] = [
     }
 ];
 
-    </script>
+</script>
 
 <header>
     <div class="header-wrapper">
@@ -42,13 +42,13 @@ const data: Project[] = [
 <main>
     <div class= "content">
     <img class="header" src="../header.png" alt="Header" />
-    <h1 style="color:gray;margin-bottom:0;">Testinstanz</h1>
-    <h1>CCP Projektübersicht</h1>
+    <h1 style="color:#E7E6E6;margin-bottom:0;">Testinstanz</h1>
+    <h1><b>CCP Projektübersicht</b></h1>
     <h2>Verknüpfung von Forschungsdaten mit der CCP-Infrastruktur</h2>
     <p>Um Patienten im CCP Explorer identifizieren zu können, die in ein Forschungsprojekt eingeschlossen wurden, werden diese mit einem projekt-spezifisches Patienten-Pseudonym (PSP-ID) gekennzeichnet. In der folgenden Übersicht werden zu diesen im CCP Explorer aufgeführten Forschungsprojekten jeweils eine Kurzzusammenfassung sowie ausgewählte Metainformationen aufgeführt. Die dargestellten Informationen, etwa zu den Kategorien erhobener Daten, erlauben eine erste Einschätzung, ob vorhandene Daten aus diesem Projekt für ein geplantes Forschungsvorhaben relevant sein könnten. Die Forschungsdaten liegen in den jeweiligen Projekt-Datenbanken vor und können auf Anfrage durch die Projektleitung weitergeben werden. Wenn Sie an Forschungsdaten von einem der aufgeführten Projekte interessiert sind, wenden Sie sich bitte an die zentrale CCP-Koordination (ccp@dkfz.de). </p>
     <div class="list">
     {#each data as project}
-        <div class="project">
+    
             <h3>{project.name}</h3>
             <p><b>Titel:</b> {project.title}<br>
            <b>Projekt-Beschreibung:</b> {project.description}<br>
@@ -57,9 +57,8 @@ const data: Project[] = [
             <b>Onkologische Entität:</b> {project.oncology}<br>
             <b>Status:</b> {project.status}<br>
             <b>Projektlaufzeit:</b> {project.project_time}<br></p>
-        </div>
-    {/each}
-</div>
+        {/each}
+    </div>
 </div>
 </main>
 
